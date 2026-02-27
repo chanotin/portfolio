@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>佐藤 優｜ECグロース × データドリブン改善</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #111118;
+  --bg-card: #16161f;
+  --bg-card-hover: #1c1c28;
+  --accent: #4ade80;
+  --accent-dim: rgba(74, 222, 128, 0.12);
+  --accent-glow: rgba(74, 222, 128, 0.25);
+  --text-primary: #f0f0f5;
+  --text-secondary: #9898a8;
+  --text-muted: #5a5a6e;
+  --border: rgba(255,255,255,0.06);
+  --border-accent: rgba(74, 222, 128, 0.2);
+  --orange: #f97316;
+  --blue: #60a5fa;
+  --purple: #a78bfa;
+  --pink: #f472b6;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Zen Kaku Gothic New', 'Outfit', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--text-muted); border-radius: 3px; }
+
+/* Grid noise overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ===== NAV ===== */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(20px);
+  background: rgba(10,10,15,0.8);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+.nav-logo span { color: var(--accent); }
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+.nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--accent); }
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 2rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  right: -200px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+  opacity: 0.3;
+  animation: float 8s ease-in-out infinite;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  left: -100px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(96, 165, 250, 0.15) 0%, transparent 70%);
+  animation: float 10s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-30px, 30px); }
+}
+
+.hero-content {
+  max-width: 900px;
+  position: relative;
+  z-index: 2;
+  animation: fadeUp 1s ease-out;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1rem;
+  background: var(--accent-dim);
+  border: 1px solid var(--border-accent);
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--accent);
+  margin-bottom: 2rem;
+  letter-spacing: 0.04em;
+}
+.hero-label::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.hero h1 {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2.8rem, 6vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.5rem;
+}
+.hero h1 .accent { color: var(--accent); }
+.hero h1 .dim { color: var(--text-muted); }
+
+.hero-desc {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+}
+
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+.hero-tag {
+  padding: 0.45rem 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  transition: all 0.3s;
+}
+.hero-tag:hover {
+  border-color: var(--border-accent);
+  color: var(--accent);
+  background: var(--accent-dim);
+}
+
+/* ===== SECTIONS COMMON ===== */
+section {
+  padding: 6rem 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--accent);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+.section-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 3rem;
+}
+
+/* ===== METRICS ===== */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem;
+}
+
+.metric-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.metric-card:hover {
+  border-color: var(--border-accent);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+.metric-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 2px;
+  border-radius: 0 0 2px 2px;
+}
+.metric-card:nth-child(1)::before { background: var(--accent); }
+.metric-card:nth-child(2)::before { background: var(--blue); }
+.metric-card:nth-child(3)::before { background: var(--orange); }
+.metric-card:nth-child(4)::before { background: var(--purple); }
+
+.metric-value {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2.8rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.3rem;
+}
+.metric-card:nth-child(1) .metric-value { color: var(--accent); }
+.metric-card:nth-child(2) .metric-value { color: var(--blue); }
+.metric-card:nth-child(3) .metric-value { color: var(--orange); }
+.metric-card:nth-child(4) .metric-value { color: var(--purple); }
+
+.metric-label {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.6rem;
+  font-weight: 500;
+}
+.metric-detail {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+/* ===== CASE STUDY ===== */
+.case-study {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 3rem;
+  margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s;
+}
+.case-study:hover {
+  border-color: var(--border-accent);
+}
+
+.case-study::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  opacity: 0.04;
+  pointer-events: none;
+}
+.case-study:nth-child(1)::after { background: var(--accent); }
+.case-study:nth-child(2)::after { background: var(--blue); }
+.case-study:nth-child(3)::after { background: var(--orange); }
+
+.case-number {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.case-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 2rem;
+}
+
+.case-flow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.case-flow-step {
+  padding: 1.2rem;
+  position: relative;
+}
+.case-flow-step:not(:last-child)::after {
+  content: '→';
+  position: absolute;
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  z-index: 2;
+}
+
+.flow-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+.flow-label.challenge { color: var(--pink); }
+.flow-label.analysis { color: var(--blue); }
+.flow-label.action { color: var(--orange); }
+.flow-label.result { color: var(--accent); }
+
+.flow-text {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.case-results {
+  display: flex;
+  gap: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.case-result-item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+.case-result-value {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+.case-result-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+/* ===== SEO/AIO ===== */
+.seo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2rem;
+}
+
+.seo-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 2rem;
+  transition: all 0.3s;
+}
+.seo-card:hover {
+  border-color: var(--border-accent);
+  transform: translateY(-2px);
+}
+
+.seo-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+.seo-card:nth-child(1) .seo-icon { background: rgba(74, 222, 128, 0.1); }
+.seo-card:nth-child(2) .seo-icon { background: rgba(96, 165, 250, 0.1); }
+.seo-card:nth-child(3) .seo-icon { background: rgba(249, 115, 22, 0.1); }
+.seo-card:nth-child(4) .seo-icon { background: rgba(167, 139, 250, 0.1); }
+
+.seo-card h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+}
+.seo-card p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.seo-result {
+  margin-top: 1rem;
+  padding: 0.6rem 1rem;
+  background: var(--accent-dim);
+  border-radius: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--accent);
+}
+
+/* ===== SERVICES ===== */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+
+.service-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 2rem 1.5rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+.service-card:hover {
+  border-color: var(--accent);
+  background: var(--bg-card-hover);
+  transform: translateY(-4px);
+}
+.service-card:hover .service-num {
+  color: var(--accent);
+}
+
+.service-num {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  opacity: 0.3;
+  line-height: 1;
+  margin-bottom: 1rem;
+  transition: all 0.3s;
+}
+
+.service-card h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+}
+.service-card p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.service-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 1rem;
+}
+.service-tags span {
+  padding: 0.25rem 0.6rem;
+  background: var(--accent-dim);
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--accent);
+}
+
+/* ===== FOOTER / CTA ===== */
+.cta-section {
+  text-align: center;
+  padding: 6rem 2rem 8rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.cta-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+
+.cta-desc {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 2.2rem;
+  background: var(--accent);
+  color: var(--bg-primary);
+  border: none;
+  border-radius: 10px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+}
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px var(--accent-glow);
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* ===== DIVIDER ===== */
+.section-divider {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+}
+
+/* ===== SCROLL ANIMATION ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+  .case-flow { grid-template-columns: repeat(2, 1fr); }
+  .case-flow-step:nth-child(2)::after { display: none; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .seo-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .metrics-grid { grid-template-columns: 1fr; }
+  .case-flow { grid-template-columns: 1fr; }
+  .case-flow-step::after { display: none !important; }
+  .case-study { padding: 2rem 1.5rem; }
+  .services-grid { grid-template-columns: 1fr; }
+  .case-results { flex-direction: column; gap: 1rem; }
+  nav { padding: 0.8rem 1rem; }
+  .nav-links { gap: 1rem; }
+  .nav-links a { font-size: 0.75rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">YU<span>.</span>SATO</div>
+  <ul class="nav-links">
+    <li><a href="#results">Results</a></li>
+    <li><a href="#cases">Cases</a></li>
+    <li><a href="#seo">SEO/AIO</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-label">Available for Projects</div>
+    <h1>
+      佐藤 優<br>
+      <span class="accent">EC Growth</span> <span class="dim">&</span><br>
+      Data-Driven <span class="accent">Optimizer</span>
+    </h1>
+    <p class="hero-desc">
+      広告運用・EC最適化・分析基盤構築を一気通貫で設計。<br>
+      データに基づく意思決定と生成AIの実装で、事業成長を加速させます。
+    </p>
+    <div class="hero-tags">
+      <span class="hero-tag">KPI設計</span>
+      <span class="hero-tag">広告×EC最適化</span>
+      <span class="hero-tag">分析基盤構築</span>
+      <span class="hero-tag">CRO</span>
+      <span class="hero-tag">生成AI活用</span>
+      <span class="hero-tag">業務自動化</span>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- METRICS -->
+<section id="results">
+  <div class="reveal">
+    <div class="section-label">// Results</div>
+    <h2 class="section-title">実績サマリー</h2>
+  </div>
+  <div class="metrics-grid">
+    <div class="metric-card reveal">
+      <div class="metric-value">3.2×</div>
+      <div class="metric-label">ROAS改善</div>
+      <div class="metric-detail">1.8 → 3.2（+78%）</div>
+    </div>
+    <div class="metric-card reveal">
+      <div class="metric-value">3.1%</div>
+      <div class="metric-label">CVR向上</div>
+      <div class="metric-detail">1.9% → 3.1%（+63%）</div>
+    </div>
+    <div class="metric-card reveal">
+      <div class="metric-value">150%</div>
+      <div class="metric-label">月次売上成長</div>
+      <div class="metric-detail">施策開始6ヶ月時点</div>
+    </div>
+    <div class="metric-card reveal">
+      <div class="metric-value">75%</div>
+      <div class="metric-label">レポート工数削減</div>
+      <div class="metric-detail">3h → 40min / 回</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CASE STUDIES -->
+<section id="cases">
+  <div class="reveal">
+    <div class="section-label">// Case Studies</div>
+    <h2 class="section-title">プロジェクト事例</h2>
+  </div>
+
+  <!-- Case 1: TikTok Shop -->
+  <div class="case-study reveal">
+    <div class="case-number">Case 01</div>
+    <h3 class="case-title">TikTok Shop ─ ROAS改善 & CVR最大化</h3>
+    <div class="case-flow">
+      <div class="case-flow-step">
+        <div class="flow-label challenge">Challenge</div>
+        <div class="flow-text">ROAS低迷が継続。広告→商品ページの導線が分断され、離脱率が高い状態。</div>
+      </div>
+      <div class="case-flow-step">
+        <div class="flow-label analysis">Analysis</div>
+        <div class="flow-text">視聴維持率 × CTR × 商品導線を因数分解し、ボトルネックを特定。</div>
+      </div>
+      <div class="case-flow-step">
+        <div class="flow-label action">Action</div>
+        <div class="flow-text">勝ち動画の構造抽出、アカウント構造再設計、訴求軸のA/Bテスト実施。</div>
+      </div>
+      <div class="case-flow-step">
+        <div class="flow-label result">Result</div>
+        <div class="flow-text">ROAS大幅改善、CVR向上を達成。安定的な獲得基盤を構築。</div>
+      </div>
+    </div>
+    <div class="case-results">
+      <div class="case-result-item">
+        <span class="case-result-value">+78%</span>
+        <span class="case-result-label">ROAS改善</span>
+      </div>
+      <div class="case-result-item">
+        <span class="case-result-value">+63%</span>
+        <span class="case-result-label">CVR向上</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Case 2: Analytics -->
+  <div class="case-study reveal">
+    <div class="case-number">Case 02</div>
+    <h3 class="case-title">分析基盤構築 ─ レポート属人化の解消</h3>
+    <div class="case-flow">
+      <div class="case-flow-step">
+        <div class="flow-label challenge">Challenge</div>
+        <div class="flow-text">レポートが属人化し、数値確認に時間がかかり判断が遅延。</div>
+      </div>
+      <div class="case-flow-step">
+        <div class="flow-label analysis">Analysis</div>
+        <div class="flow-text">既存フローの棚卸し。確認頻度と意思決定ポイントを整理。</div>
+      </div>
+      <div class="case-flow-step">
+        <div class="flow-label action">Action</div>
+        <div class="flow-text">GA4イベント再設計、Lookerダッシュボード構築、GASで自動配信。</div>
+      </div>
+      <div class="case-flow-step">
+        <div class="flow-label result">Result</div>
+        <div class="flow-text">作業時間を大幅短縮。データに基づく意思決定が即日で可能に。</div>
+      </div>
+    </div>
+    <div class="case-results">
+      <div class="case-result-item">
+        <span class="case-result-value">-87%</span>
+        <span class="case-result-label">作業時間（3h→40min）</span>
+      </div>
+      <div class="case-result-item">
+        <span class="case-result-value">即日化</span>
+        <span class="case-result-label">意思決定スピード</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SEO/AIO -->
+<section id="seo">
+  <div class="reveal">
+    <div class="section-label">// SEO & AIO</div>
+    <h2 class="section-title">SEO / AI Overview 対策</h2>
+  </div>
+  <div class="seo-grid">
+    <div class="seo-card reveal">
+      <div class="seo-icon">🔍</div>
+      <h3>検索意図の分解</h3>
+      <p>キーワードの背後にある検索意図をInformational / Transactional / Navigationalに分解。コンテンツ設計の土台を構築。</p>
+    </div>
+    <div class="seo-card reveal">
+      <div class="seo-icon">🔗</div>
+      <h3>内部リンク設計</h3>
+      <p>トピッククラスター構造の設計と内部リンクの最適化。サイト全体の評価を底上げするリンク戦略を実装。</p>
+    </div>
+    <div class="seo-card reveal">
+      <div class="seo-icon">🤖</div>
+      <h3>AI活用プロセス</h3>
+      <p>生成AIを活用したコンテンツリサーチ・構成案作成・メタ情報最適化。品質を維持しながら制作効率を向上。</p>
+    </div>
+    <div class="seo-card reveal">
+      <div class="seo-icon">📈</div>
+      <h3>順位改善実績</h3>
+      <p>ターゲットキーワードの検索順位を継続的に改善。AI Overview（SGE）への表示対策も並行して実施。</p>
+      <div class="seo-result">圏外 → Top 10 達成キーワード多数</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="reveal">
+    <div class="section-label">// Services</div>
+    <h2 class="section-title">提供できること</h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-num">01</div>
+      <h3>EC分析 & KPI設計</h3>
+      <p>売上構造を因数分解し、事業フェーズに合ったKPIツリーを設計。追うべき指標を明確にします。</p>
+      <div class="service-tags">
+        <span>GA4</span>
+        <span>KPI Tree</span>
+        <span>Cohort</span>
+      </div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">02</div>
+      <h3>広告最適化 & CRO</h3>
+      <p>広告配信設計からLP改善まで、獲得効率を最大化。クリエイティブ分析に基づくPDCAを回します。</p>
+      <div class="service-tags">
+        <span>Meta / Google</span>
+        <span>TikTok</span>
+        <span>A/B Test</span>
+      </div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">03</div>
+      <h3>分析基盤 & ダッシュボード</h3>
+      <p>GA4・Looker Studio・BigQueryを組み合わせた分析基盤を構築。レポートの自動化まで対応。</p>
+      <div class="service-tags">
+        <span>Looker Studio</span>
+        <span>BigQuery</span>
+        <span>GAS</span>
+      </div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">04</div>
+      <h3>SEO / AIO対策</h3>
+      <p>検索意図に基づくコンテンツ戦略の設計。AI Overview時代に対応した可視性の確保を支援。</p>
+      <div class="service-tags">
+        <span>Technical SEO</span>
+        <span>Content</span>
+        <span>AIO</span>
+      </div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">05</div>
+      <h3>業務自動化</h3>
+      <p>GAS・API連携・生成AIを組み合わせて、繰り返し業務を自動化。運用コストを削減します。</p>
+      <div class="service-tags">
+        <span>GAS</span>
+        <span>API</span>
+        <span>GenAI</span>
+      </div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">06</div>
+      <h3>生成AI活用支援</h3>
+      <p>分析・施策立案・文章生成・ドキュメント化まで、生成AIを業務フローに組み込む設計を行います。</p>
+      <div class="service-tags">
+        <span>Prompt Design</span>
+        <span>Workflow</span>
+        <span>RAG</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="reveal">
+    <div class="section-label">// Contact</div>
+    <h2 class="cta-title">プロジェクトのご相談はこちら</h2>
+    <p class="cta-desc">EC成長・広告改善・分析基盤構築など、<br>データに基づく事業改善のご相談をお待ちしています。</p>
+    <a href="mailto:yu.sato@bipe.co.jp" class="cta-button">
+      お問い合わせ →
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Yu Sato. All Rights Reserved.</p>
+</footer>
+
+<script>
+// Scroll reveal animation
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, index) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.classList.add('visible');
+      }, index * 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Smooth nav bg on scroll
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  if (window.scrollY > 50) {
+    nav.style.borderBottomColor = 'rgba(255,255,255,0.08)';
+  } else {
+    nav.style.borderBottomColor = 'rgba(255,255,255,0.04)';
+  }
+});
+</script>
+</body>
+</html>
