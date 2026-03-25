@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>サービス一覧｜佐藤 優</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Noto Sans JP','Sora',sans-serif;
+  background:#0e0e16;color:#eeeef2;
+  font-size:18px;line-height:1.8;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+::selection{background:rgba(16,185,129,0.25)}
+:root{
+  --g:#10b981;--g-dim:rgba(16,185,129,0.06);--g-border:rgba(16,185,129,0.18);
+  --bg:#0e0e16;--card:#161620;
+  --t1:#eeeef2;--t2:#a0a0b4;--t3:#5a5a6e;
+  --border:#1e1e2a;
+}
+
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:20px 48px;
+  display:flex;justify-content:space-between;align-items:center;
+  background:rgba(14,14,22,0.85);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+}
+.logo{font-family:'Sora';font-weight:700;font-size:18px;letter-spacing:-0.5px;color:var(--t2)}
+.logo span{color:var(--g)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-family:'Sora';font-size:14px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--t3);transition:color 0.3s}
+.nav-links a:hover{color:var(--t1)}
+.nav-links a.active{color:var(--t1)}
+
+.wrap{max-width:1060px;margin:0 auto;padding:0 48px}
+.divider{height:1px;background:var(--border)}
+
+/* PAGE HERO */
+.page-hero{padding:140px 0 80px;text-align:center}
+.page-hero h1{font-family:'Sora';font-size:48px;font-weight:700;letter-spacing:-1px;margin-bottom:12px}
+.page-hero h1 .green{color:var(--g)}
+.page-hero p{font-size:18px;color:var(--t2)}
+
+/* SECTION */
+section{padding:80px 0 100px}
+.sec-head{margin-bottom:56px}
+.sec-label{font-family:'IBM Plex Mono';font-size:14px;color:var(--g);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px}
+.sec-title{font-family:'Sora';font-size:36px;font-weight:700;letter-spacing:-1px}
+
+/* SERVICE CARDS */
+.svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.svc{border:1px solid var(--border);border-radius:10px;padding:36px 28px;transition:border-color 0.3s;display:flex;flex-direction:column}
+.svc:hover{border-color:var(--g-border)}
+.svc-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px}
+.svc h3{font-family:'Sora';font-size:20px;font-weight:600}
+.svc-price{font-family:'IBM Plex Mono';font-size:14px;color:var(--g)}
+.svc p{font-size:16px;color:var(--t2);line-height:1.8;flex:1}
+.svc-del{margin-top:16px;padding-top:12px;border-top:1px solid var(--border)}
+.svc-del-title{font-family:'IBM Plex Mono';font-size:12px;color:var(--t3);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
+.svc-del-list{font-size:15px;color:var(--t2)}
+.svc-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.svc-tags span{font-family:'IBM Plex Mono';font-size:13px;color:var(--g);padding:4px 10px;background:var(--g-dim);border-radius:4px}
+
+/* FEATURED */
+.svc.feat{grid-column:1/-1;border-color:var(--g-border);background:var(--card)}
+.feat-badge{font-family:'IBM Plex Mono';font-size:14px;color:var(--g);margin-bottom:16px;letter-spacing:1px}
+.feat-inner{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.feat-right{display:flex;flex-direction:column;gap:12px}
+.feat-stat{display:flex;align-items:baseline;gap:8px}
+.feat-stat-val{font-family:'Sora';font-size:24px;font-weight:700;color:var(--g)}
+.feat-stat-label{font-size:16px;color:var(--t2)}
+
+/* CTA */
+.cta{text-align:center;padding:100px 48px}
+.cta h2{font-family:'Sora';font-size:32px;font-weight:700;margin-bottom:12px}
+.cta p{font-size:18px;color:var(--t2);margin-bottom:48px}
+.btn-g{
+  display:inline-block;padding:16px 40px;
+  background:var(--g);color:var(--bg);
+  font-family:'Sora';font-size:16px;font-weight:600;
+  border-radius:8px;border:none;cursor:pointer;transition:all 0.3s;
+}
+.btn-g:hover{opacity:0.9;transform:translateY(-1px)}
+.btn-o{
+  display:inline-block;padding:16px 40px;margin-left:12px;
+  background:transparent;color:var(--t1);
+  font-family:'Sora';font-size:16px;font-weight:600;
+  border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:all 0.3s;
+}
+.btn-o:hover{border-color:var(--g);color:var(--g)}
+
+footer{text-align:center;padding:32px;border-top:1px solid var(--border);font-size:14px;color:var(--t3)}
+
+.rv{opacity:0;transform:translateY(20px);transition:all 0.7s cubic-bezier(.22,1,.36,1)}
+.rv.vis{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+  .svc-grid{grid-template-columns:1fr}
+  .svc.feat{grid-column:auto}
+  .feat-inner{grid-template-columns:1fr}
+  nav{padding:16px 24px}.nav-links{gap:20px}.nav-links a{font-size:12px}
+  .wrap{padding:0 24px}
+  .page-hero h1{font-size:36px}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">YU<span>.</span>SATO</a>
+  <ul class="nav-links">
+    <li><a href="index.html#results">Results</a></li>
+    <li><a href="index.html#ai">AI</a></li>
+    <li><a href="index.html#cases">Cases</a></li>
+    <li><a href="services.html" class="active">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+
+<div class="page-hero">
+  <h1><span class="green">Services</span></h1>
+  <p>EC成長からAI活用まで、データに基づく事業改善をサポートします。</p>
+</div>
+
+<div class="divider"></div>
+
+<section>
+  <div class="sec-head rv"><div class="sec-label">AI & Automation</div><h2 class="sec-title">生成AI活用・業務自動化</h2></div>
+  <div class="svc-grid">
+    <div class="svc feat rv">
+      <div class="feat-badge">★ Most Popular</div>
+      <div class="feat-inner">
+        <div>
+          <h3>生成AIで業務フロー自動化</h3>
+          <p>レポート作成・情報収集・文書生成など、繰り返し業務をAIパイプラインで自動化。Generator → Inspector → Fixer の品質管理サイクルで安定した出力品質を実現。</p>
+          <div class="svc-tags"><span>Claude / ChatGPT</span><span>Pipeline Design</span><span>GAS / API</span></div>
+        </div>
+        <div class="feat-right">
+          <div class="svc-price" style="font-size:16px">30,000円〜</div>
+          <div class="feat-stat"><span class="feat-stat-val">-87%</span><span class="feat-stat-label">レポート工数削減実績</span></div>
+          <div class="feat-stat"><span class="feat-stat-val">30+</span><span class="feat-stat-label">自動化コマンド構築済み</span></div>
+          <div class="svc-del"><div class="svc-del-title">Deliverables</div><div class="svc-del-list">自動化フロー設計書 / プロンプト一式 / テンプレート / 運用マニュアル</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="svc rv">
+      <div class="svc-top"><h3>SEO記事構成＋生成</h3><span class="svc-price">10,000円〜</span></div>
+      <p>SERP分析に基づく構成案から品質管理済みの記事生成まで。AI臭検知・出典チェック・EEAT補強含むパイプラインで制作。</p>
+      <div class="svc-del"><div class="svc-del-title">Deliverables</div><div class="svc-del-list">SERP分析レポート / 構成案 / 記事本文 / 検査レポート</div></div>
+      <div class="svc-tags"><span>SERP Analysis</span><span>EEAT</span><span>Pipeline</span></div>
+    </div>
+    <div class="svc rv">
+      <div class="svc-top"><h3>提案書・ドキュメント作成</h3><span class="svc-price">10,000円〜</span></div>
+      <p>営業提案書・業務マニュアル・SOP作成を生成AIで効率化。テンプレート設計と組み合わせた再現性のあるドキュメント運用。</p>
+      <div class="svc-del"><div class="svc-del-title">Deliverables</div><div class="svc-del-list">提案書テンプレート / SOP / マニュアル / プロンプト設計</div></div>
+      <div class="svc-tags"><span>Proposal</span><span>SOP</span><span>Template</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section>
+  <div class="sec-head rv"><div class="sec-label">EC & Advertising</div><h2 class="sec-title">EC最適化・広告運用</h2></div>
+  <div class="svc-grid">
+    <div class="svc rv">
+      <div class="svc-top"><h3>EC分析 & KPIダッシュボード設計</h3><span class="svc-price">15,000円〜</span></div>
+      <p>売上構造を因数分解し、事業フェーズに合ったKPIツリーを設計。スプレッドシートでダッシュボードを構築。</p>
+      <div class="svc-del"><div class="svc-del-title">Deliverables</div><div class="svc-del-list">KPIツリー / ダッシュボード / 分析レポート</div></div>
+      <div class="svc-tags"><span>GA4</span><span>KPI Tree</span><span>Cohort</span></div>
+    </div>
+    <div class="svc rv">
+      <div class="svc-top"><h3>広告アカウント診断 & 改善設計</h3><span class="svc-price">15,000円〜</span></div>
+      <p>Meta / TikTok / Google広告のパフォーマンスを分析し改善施策を設計。クリエイティブ分析に基づくPDCA構築。</p>
+      <div class="svc-del"><div class="svc-del-title">Deliverables</div><div class="svc-del-list">診断レポート / 改善施策リスト / クリエイティブ改善案</div></div>
+      <div class="svc-tags"><span>Meta</span><span>TikTok</span><span>Google</span><span>A/B Test</span></div>
+    </div>
+    <div class="svc rv">
+      <div class="svc-top"><h3>CRM & リテンション設計</h3><span class="svc-price">15,000円〜</span></div>
+      <p>メール・LINE施策の設計と運用。LTV向上と解約率抑制に向けたコミュニケーション設計。</p>
+      <div class="svc-del"><div class="svc-del-title">Deliverables</div><div class="svc-del-list">CRM設計書 / 配信シナリオ / テンプレート / 効果測定フレーム</div></div>
+      <div class="svc-tags"><span>Email</span><span>LINE / Lstep</span><span>LTV</span></div>
+    </div>
+    <div class="svc rv">
+      <div class="svc-top"><h3>レポート設計 & 自動化</h3><span class="svc-price">10,000円〜</span></div>
+      <p>GA4とスプレッドシートを軸に、テンプレート設計から生成AI活用の自動化まで対応。</p>
+      <div class="svc-del"><div class="svc-del-title">Deliverables</div><div class="svc-del-list">レポートテンプレート / 自動化スクリプト / 運用ガイド</div></div>
+      <div class="svc-tags"><span>GA4</span><span>Spreadsheet</span><span>GenAI</span></div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<div class="divider" style="max-width:1060px;margin:0 auto"></div>
+
+<section class="cta" id="contact">
+  <div class="rv">
+    <div class="sec-label" style="text-align:center;margin-bottom:8px">Contact</div>
+    <h2>まずはお気軽にご相談ください</h2>
+    <p>ご要件に合わせて最適なプランをご提案します。初回ヒアリングは無料です。</p>
+    <div>
+      <a href="mailto:y.sato@example.com" class="btn-g">お問い合わせ →</a>
+      <a href="index.html" class="btn-o">← トップに戻る</a>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Yu Sato. All Rights Reserved.</footer>
+
+<script>
+const o=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');o.unobserve(e.target)}})},{threshold:0.1});
+document.querySelectorAll('.rv').forEach(el=>o.observe(el));
+</script>
+</body>
+</html>
