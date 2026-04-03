@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal Brand Dashboard</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f5f5f5; color: #333; padding: 24px; max-width: 1200px; margin: 0 auto; }
+  h1 { font-size: 1.5rem; margin-bottom: 4px; }
+  .updated { font-size: 0.85rem; color: #888; margin-bottom: 24px; }
+  .period { font-size: 0.9rem; color: #666; margin-bottom: 24px; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 32px; }
+  .card { background: #fff; border-radius: 8px; padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+  .card .label { font-size: 0.8rem; color: #888; text-transform: uppercase; letter-spacing: 0.5px; }
+  .card .value { font-size: 2rem; font-weight: 700; margin-top: 4px; }
+  .card .value.revenue { color: #2e7d32; }
+  h2 { font-size: 1.15rem; margin: 32px 0 12px; border-bottom: 2px solid #e0e0e0; padding-bottom: 6px; }
+  table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-bottom: 24px; }
+  th { background: #fafafa; text-align: left; padding: 10px 14px; font-size: 0.8rem; color: #666; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid #eee; }
+  td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; font-size: 0.9rem; }
+  tr:last-child td { border-bottom: none; }
+  .funnel { display: flex; gap: 0; margin-bottom: 24px; }
+  .funnel-step { flex: 1; text-align: center; padding: 16px 8px; background: #fff; border: 1px solid #e0e0e0; }
+  .funnel-step:first-child { border-radius: 8px 0 0 8px; }
+  .funnel-step:last-child { border-radius: 0 8px 8px 0; }
+  .funnel-step .f-label { font-size: 0.75rem; color: #888; }
+  .funnel-step .f-value { font-size: 1.5rem; font-weight: 700; margin-top: 4px; }
+  .notes { background: #fff; border-radius: 8px; padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-bottom: 24px; }
+  .notes ul { padding-left: 20px; margin-top: 8px; }
+  .notes li { margin-bottom: 4px; font-size: 0.9rem; }
+  .tag { display: inline-block; font-size: 0.75rem; padding: 2px 8px; border-radius: 10px; background: #e8f5e9; color: #2e7d32; }
+  .tag.draft { background: #fff3e0; color: #e65100; }
+  .tag.won { background: #e8f5e9; color: #2e7d32; }
+  .tag.inquiry { background: #e3f2fd; color: #1565c0; }
+  .tag.consult { background: #f3e5f5; color: #7b1fa2; }
+</style>
+</head>
+<body>
+
+<h1>Personal Brand Dashboard</h1>
+<div class="updated">Updated: 2026-04-03</div>
+<div class="period">Period: 2026-04</div>
+
+<!-- Summary Cards -->
+<div class="cards">
+  <div class="card">
+    <div class="label">Created</div>
+    <div class="value">3</div>
+  </div>
+  <div class="card">
+    <div class="label">Published</div>
+    <div class="value">1</div>
+  </div>
+  <div class="card">
+    <div class="label">Inquiries</div>
+    <div class="value">3</div>
+  </div>
+  <div class="card">
+    <div class="label">Won</div>
+    <div class="value">1</div>
+  </div>
+  <div class="card">
+    <div class="label">Revenue</div>
+    <div class="value revenue">&yen;30,000</div>
+  </div>
+</div>
+
+<!-- Production Summary -->
+<h2>Production Summary</h2>
+
+<table>
+  <tr><th>Brand</th><th>Count</th></tr>
+  <tr><td>llmo</td><td>1</td></tr>
+  <tr><td>ai_marketer</td><td>1</td></tr>
+  <tr><td>novel</td><td>1</td></tr>
+</table>
+
+<table>
+  <tr><th>Content Type</th><th>Count</th></tr>
+  <tr><td>article</td><td>2</td></tr>
+  <tr><td>novel</td><td>1</td></tr>
+</table>
+
+<!-- Channel Summary -->
+<h2>Channel Summary</h2>
+
+<table>
+  <tr><th>Lead Source</th><th>Count</th></tr>
+  <tr><td>note</td><td>1</td></tr>
+  <tr><td>coconala</td><td>1</td></tr>
+  <tr><td>direct</td><td>1</td></tr>
+</table>
+
+<table>
+  <tr><th>Source Brand</th><th>Count</th></tr>
+  <tr><td>llmo</td><td>1</td></tr>
+  <tr><td>ai_marketer</td><td>1</td></tr>
+  <tr><td>unknown</td><td>1</td></tr>
+</table>
+
+<!-- Funnel View -->
+<h2>Funnel View</h2>
+
+<div class="funnel">
+  <div class="funnel-step">
+    <div class="f-label">Inquiry</div>
+    <div class="f-value">1</div>
+  </div>
+  <div class="funnel-step">
+    <div class="f-label">Consult</div>
+    <div class="f-value">1</div>
+  </div>
+  <div class="funnel-step">
+    <div class="f-label">Proposal</div>
+    <div class="f-value">0</div>
+  </div>
+  <div class="funnel-step">
+    <div class="f-label">Won</div>
+    <div class="f-value">1</div>
+  </div>
+</div>
+
+<!-- Asset View -->
+<h2>Asset View</h2>
+
+<table>
+  <tr><th>Asset Type</th><th>Count</th><th>Reuse Ready</th></tr>
+  <tr><td>prompt</td><td>1</td><td>1</td></tr>
+  <tr><td>dashboard</td><td>1</td><td>1</td></tr>
+  <tr><td>template</td><td>1</td><td>1</td></tr>
+</table>
+
+<p style="font-size:0.85rem;color:#666;margin-top:8px;">Total assets: 3 / Reuse ready: 3</p>
+
+<!-- Recent Records -->
+<h2>Recent Records</h2>
+
+<h3 style="font-size:0.9rem;color:#666;margin:16px 0 8px;">Content Log</h3>
+<table>
+  <tr><th>Date</th><th>Brand</th><th>Type</th><th>Title</th><th>Status</th></tr>
+  <tr><td>2026-04-01</td><td>llmo</td><td>article</td><td>ChatGPTに「おすすめの買取店は？」と聞いたら出てきますか</td><td><span class="tag draft">draft</span></td></tr>
+  <tr><td>2026-04-01</td><td>ai_marketer</td><td>article</td><td>AI活用マーケター向け記事サンプル</td><td><span class="tag">published</span></td></tr>
+  <tr><td>2026-04-01</td><td>novel</td><td>novel</td><td>小説投稿サンプル</td><td><span class="tag draft">draft</span></td></tr>
+</table>
+
+<h3 style="font-size:0.9rem;color:#666;margin:16px 0 8px;">Lead Log</h3>
+<table>
+  <tr><th>Date</th><th>Source</th><th>Brand</th><th>Stage</th><th>Offer</th><th>Revenue</th></tr>
+  <tr><td>2026-04-01</td><td>note</td><td>llmo</td><td><span class="tag inquiry">inquiry</span></td><td>診断</td><td></td></tr>
+  <tr><td>2026-04-01</td><td>coconala</td><td>ai_marketer</td><td><span class="tag consult">consult</span></td><td>自動化</td><td></td></tr>
+  <tr><td>2026-04-01</td><td>direct</td><td>unknown</td><td><span class="tag won">won</span></td><td>記事</td><td>&yen;30,000</td></tr>
+</table>
+
+<h3 style="font-size:0.9rem;color:#666;margin:16px 0 8px;">Service Log</h3>
+<table>
+  <tr><th>Date</th><th>Platform</th><th>Service</th><th>Category</th><th>Status</th><th>Brand</th></tr>
+  <tr><td>2026-04-01</td><td>coconala</td><td>LLMO診断サービス案</td><td>診断</td><td>idea</td><td>llmo</td></tr>
+  <tr><td>2026-04-01</td><td>coconala</td><td>AI活用相談</td><td>相談</td><td>listed</td><td>ai_marketer</td></tr>
+  <tr><td>2026-04-01</td><td>direct</td><td>創作プロフィール導線</td><td>その他</td><td>idea</td><td>novel</td></tr>
+</table>
+
+<!-- Notes -->
+<h2>Notes</h2>
+
+<div class="notes">
+  <ul>
+    <li><strong>公開詰まり:</strong> content_log の 3 件中 2 件が draft のまま。公開率 33%</li>
+    <li><strong>proposal 段階が 0 件:</strong> inquiry/consult から proposal への転換が未発生</li>
+    <li><strong>novel ブランド:</strong> lead_log に novel 経由の問い合わせが 0 件。導線の設置状況を確認</li>
+    <li><strong>データ量:</strong> 各 CSV ともサンプルデータ 3 件のみ。月末に実データを追記してから再生成を推奨</li>
+  </ul>
+</div>
+
+<div style="text-align:center;font-size:0.75rem;color:#bbb;margin-top:40px;">
+  Generated by CHANOTIN analytics / dashboard-personal-brand
+</div>
+
+</body>
+</html>
