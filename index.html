@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CHANOTIN // Portfolio</title>
-<meta name="description" content="AIと運用をつなぐ事業オペレーター。SEO/LLMO、EC成長、コマース運用、AI活用の設計と実務基盤づくりを横断して担当。">
+<meta name="description" content="SEO × LLMO × AI活用の3層で、事業の集客と運用基盤を一気通貫で設計。EC、リテール、コマース運用、社内オペレーション整備を横断する事業オペレーター。">
 <style>
 :root{
   --bg:#12160e; --surface:#1e2416; --surface-2:#2a3020;
@@ -122,8 +122,8 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .cta::before{content:'';position:absolute;top:0;left:0;width:40%;height:2px;background:var(--accent);box-shadow:0 0 12px var(--accent)}
 .cta h2{font-size:26px;font-weight:700;margin-bottom:16px;letter-spacing:-.01em}
 .cta h2 .code{font-family:var(--mono);font-size:10px;font-weight:400;color:var(--accent);display:block;margin-bottom:10px;text-transform:uppercase;letter-spacing:.2em}
-.cta p{font-size:14.5px;line-height:1.85;color:var(--text-2);max-width:580px;margin:0 auto}
-.cta-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+.cta p{font-size:14.5px;line-height:1.85;color:var(--text-2);max-width:580px;margin:0 auto 28px}
+.cta-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 .cta-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;font-family:var(--mono);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;text-decoration:none;border:1px solid var(--accent);color:var(--accent);background:transparent;transition:all .15s;clip-path:polygon(0 0,100% 0,100% calc(100% - 6px),calc(100% - 6px) 100%,0 100%)}
 .cta-btn:hover{background:var(--accent);color:#0d1108}
 
@@ -153,9 +153,102 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
   .pillar,.work,.ai-card,.cta{background:#fff;border-color:#000}
   .cta{clip-path:none}
 }
+
+/* ========== FULL MGS PACKAGE ========== */
+
+/* CRT電源ON 白フラッシュ */
+.power-on{position:fixed;inset:0;background:#fff;z-index:99999;animation:powerOn .35s ease-out forwards;pointer-events:none}
+@keyframes powerOn{0%{opacity:0}10%{opacity:1}100%{opacity:0;visibility:hidden}}
+
+/* CODEC通信シーケンス */
+.codec-seq{position:fixed;inset:0;background:#0a0d06;z-index:9998;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--mono);color:var(--good);padding:40px;transition:opacity .4s ease-out}
+.codec-seq.hide{opacity:0;visibility:hidden;pointer-events:none}
+.codec-seq::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.4) 0px,rgba(0,0,0,.4) 1px,transparent 1px,transparent 3px);pointer-events:none}
+.codec-frame{position:relative;width:100%;max-width:720px;border:1px solid var(--accent);padding:40px 50px}
+.codec-frame::before,.codec-frame::after,.codec-frame .corner-tl,.codec-frame .corner-tr{content:'';position:absolute;width:18px;height:18px;border:2px solid var(--accent)}
+.codec-frame::before{top:-3px;left:-3px;border-right:none;border-bottom:none}
+.codec-frame::after{bottom:-3px;right:-3px;border-left:none;border-top:none}
+.codec-frame .corner-tl{top:-3px;right:-3px;border-left:none;border-bottom:none}
+.codec-frame .corner-tr{bottom:-3px;left:-3px;border-right:none;border-top:none}
+.codec-incoming{font-size:13px;letter-spacing:.4em;color:var(--accent);margin-bottom:8px;animation:codecBlink 1s infinite}
+@keyframes codecBlink{0%,49%{opacity:1}50%,100%{opacity:.3}}
+.codec-freq{font-size:32px;font-weight:700;letter-spacing:.18em;color:var(--text);margin-bottom:20px;text-shadow:0 0 18px rgba(232,228,208,.5)}
+.codec-freq .unit{font-size:14px;color:var(--text-3);margin-left:6px;font-weight:400;letter-spacing:.1em}
+.codec-log{font-size:13px;line-height:2.2;text-align:left;min-height:140px}
+.codec-log .line{opacity:0;animation:codecLine .25s forwards}
+.codec-log .line::before{content:'> ';color:var(--accent)}
+.codec-log .line.ok::after{content:' [LINKED]';color:var(--good);margin-left:8px}
+.codec-log .line.warn::after{content:' [...]';color:var(--warn);margin-left:8px}
+@keyframes codecLine{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.codec-skip{position:absolute;bottom:20px;right:20px;font-size:10px;color:var(--text-3);letter-spacing:.14em;text-transform:uppercase;cursor:pointer;padding:6px 12px;border:1px solid var(--border-2);background:transparent;font-family:var(--mono)}
+.codec-skip:hover{color:var(--text);border-color:var(--accent)}
+
+/* HUD座標 (右上に常時表示) */
+.hud-coord{position:fixed;top:80px;right:24px;font-family:var(--mono);font-size:9.5px;color:var(--text-3);letter-spacing:.1em;text-align:right;line-height:1.7;pointer-events:none;z-index:5;text-transform:uppercase}
+.hud-coord .v{color:var(--accent)}
+@media(max-width:1100px){.hud-coord{display:none}}
+
+/* タイプライター(Hero h1用) */
+.typewriter{display:inline-block;border-right:.08em solid var(--accent);animation:caret .8s steps(1) infinite}
+@keyframes caret{50%{border-color:transparent}}
+.typewriter.done{border-right:none;animation:none}
+
+/* MISSION 進捗バー */
+.work-progress{margin-top:14px;padding-top:14px;border-top:1px dashed var(--border)}
+.wp-row{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:10.5px;color:var(--text-2);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+.wp-row:last-child{margin-bottom:0}
+.wp-label{flex-shrink:0;width:130px;color:var(--text-3)}
+.wp-bar{flex:1;height:6px;background:var(--surface-2);border:1px solid var(--border);position:relative;overflow:hidden}
+.wp-fill{height:100%;background:var(--good);box-shadow:0 0 8px rgba(168,192,102,.4);transition:width 1.2s ease-out}
+.wp-pct{flex-shrink:0;width:42px;text-align:right;color:var(--text);font-weight:700}
+
+/* CTA 角括弧装飾強化 */
+.cta-btn{position:relative}
+.cta-btn::before{content:'[ ';color:var(--accent);margin-right:4px;font-weight:400;letter-spacing:0}
+.cta-btn::after{content:' ]';color:var(--accent);margin-left:4px;font-weight:400;letter-spacing:0}
+.cta-btn:hover::before,.cta-btn:hover::after{color:#0d1108}
+
+/* Tactical Markers装飾 */
+.tac-mark{font-family:var(--mono);color:var(--accent);opacity:.5;font-size:10px;letter-spacing:.2em;display:inline-block;margin:0 4px;vertical-align:middle}
+.section-tac{position:absolute;top:80px;left:0;font-family:var(--mono);font-size:9px;color:var(--text-3);letter-spacing:.16em;writing-mode:vertical-rl;text-transform:uppercase}
+
+/* レーダースキャン (Featured Workセクション) */
+.radar-bg{position:relative;overflow:hidden;isolation:isolate}
+.radar-sweep{position:absolute;inset:0;pointer-events:none;opacity:.07;z-index:0}
+.radar-sweep::before{content:'';position:absolute;top:50%;left:50%;width:200%;height:200%;transform-origin:0 0;background:conic-gradient(from 0deg,transparent 0deg,var(--accent) 30deg,transparent 60deg);animation:radarSweep 6s linear infinite}
+@keyframes radarSweep{to{transform:rotate(360deg) translate(-50%,-50%);transform-origin:0 0}}
+.radar-bg > *{position:relative;z-index:1}
 </style>
 </head>
 <body>
+
+<!-- CRT POWER ON -->
+<div class="power-on" id="powerOn"></div>
+
+<!-- CODEC SEQUENCE -->
+<div class="codec-seq" id="codecSeq">
+  <div class="codec-frame">
+    <span class="corner-tl"></span>
+    <span class="corner-tr"></span>
+    <div class="codec-incoming">◉ INCOMING TRANSMISSION</div>
+    <div class="codec-freq">140.85<span class="unit">MHz</span></div>
+    <div class="codec-log">
+      <div class="line ok" style="animation-delay:.2s">SIGNAL ACQUIRED</div>
+      <div class="line ok" style="animation-delay:.5s">DECRYPTING OPERATOR PROFILE</div>
+      <div class="line warn" style="animation-delay:.85s">SYNCING MISSION DATA</div>
+      <div class="line ok" style="animation-delay:1.25s">CONNECTION SECURED · CHANNEL OPEN</div>
+    </div>
+    <button class="codec-skip" id="codecSkip">SKIP ▸</button>
+  </div>
+</div>
+
+<!-- HUD COORDINATES -->
+<div class="hud-coord">
+  <div>LAT <span class="v">35.6804°N</span></div>
+  <div>LONG <span class="v">139.7690°E</span></div>
+  <div>SECTOR <span class="v">JP-13</span></div>
+  <div style="margin-top:6px;color:var(--accent)">◆ FOX UNIT ◆</div>
+</div>
 
 <!-- FRAME BRACKETS -->
 <div class="frame-brackets">
@@ -171,7 +264,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
   </div>
   <div class="tb-status">
     <span class="led"></span>
-    <span>相談受付中</span>
+    <span>Open for Projects</span>
   </div>
 </header>
 
@@ -181,21 +274,21 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 <section class="hero">
   <div class="tagline">Operator Profile · 2026</div>
   <h1>
-    事業を前に進めるための、<br>
-    <span class="accent">AI前提の運用設計。</span>
+    <span class="typewriter" id="typeLine1">SEO・LLMO・AI活用を、</span><br>
+    <span class="accent typewriter" id="typeLine2" style="visibility:hidden">運用が回る形まで設計する。</span>
   </h1>
   <p class="lede">
-    SEOやLLMOのような集客設計から、EC改善、コマース運用、社内オペレーション整備まで、事業の実務をAI前提で再設計するタイプのオペレーターです。企画だけで終わらせず、調査、設計、テンプレート化、運用フロー化までつなげます。
+    SEO・LLMO（AI検索対策）・AI活用支援の3層で、事業の集客と運用基盤をまとめて整えるオペレーターです。「やってるのに上がらない」を数値で診断し、AI検索時代に拾われる構造を設計し、現場で回るSOPまで落とします。提案で終わらせず、運用が回るところまで責任を持ちます。
   </p>
   <div class="hero-keywords">
-    <div class="hero-kw">SEO / LLMO</div>
-    <div class="hero-kw">EC / Growth Ops</div>
-    <div class="hero-kw">Commerce / AI Ops</div>
+    <div class="hero-kw">SEO / 集客診断</div>
+    <div class="hero-kw">LLMO / AI検索対策</div>
+    <div class="hero-kw">AI Ops / 伴走支援</div>
   </div>
   <div class="hero-meta">
     <span><strong>ROLE</strong> · 事業オペレーター</span>
-    <span><strong>BASE</strong> · Independent</span>
-    <span><strong>STATUS</strong> · 相談受付中</span>
+    <span><strong>BASE</strong> · Freelance</span>
+    <span><strong>STATUS</strong> · Open for Projects</span>
   </div>
 </section>
 
@@ -203,50 +296,50 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 <section class="sec">
   <div class="sec-divider"><span class="diamond">◆</span>Section 01 · What I Do<span class="diamond">◆</span></div>
   <div class="sec-label">Service Pillars</div>
-  <h2 style="font-size:28px;margin-bottom:32px;letter-spacing:-.01em">4つの実務領域</h2>
+  <h2 style="font-size:28px;margin-bottom:32px;letter-spacing:-.01em">3層 + 実務基盤</h2>
 
   <div class="pillars">
     <div class="pillar">
-      <div class="p-num">Pillar 01</div>
-      <h3>SEO / LLMO Planning</h3>
-      <p>SEOやLLMOでは、調査と提案で終わらせず、改善テーマの整理、実行優先順位づけ、検証観点の更新までを含めて設計します。調査、仮説整理、提案、見直しを往復しながら、次の改善につながる状態を作ります。</p>
+      <div class="p-num">Layer 01</div>
+      <h3>SEO / 集客診断</h3>
+      <p>「やってるのに上がらない」を数値で診断します。Ahrefsベースのドメイン分析、カニバリ・内部リンク・コンテンツ構造を確認し、伸ばせるレバーから順番に整理します。レポートで終わらせず、改善の優先順位を運用側に渡します。</p>
       <ul>
-        <li>調査 → 仮説 → 提案 → 改善整理</li>
-        <li>AI検索時代の論点設計</li>
-        <li>提案素材・レビュー観点・見直しフロー</li>
+        <li>Ahrefsベースのドメイン診断</li>
+        <li>カニバリ・内部リンク整備</li>
+        <li>コンテンツ構造の改善設計</li>
       </ul>
     </div>
 
     <div class="pillar">
-      <div class="p-num">Pillar 02</div>
-      <h3>EC / Growth Ops</h3>
-      <p>ECでは、施策の前に「何を見れば判断できるか」を揃えたうえで、分析、優先順位づけ、実行整理、再分析までを一気通貫で回せるようにします。KPI、アクセス権限、役割分担を整理し、改善サイクルが止まらない状態を作ります。</p>
+      <div class="p-num">Layer 02</div>
+      <h3>LLMO / AI検索対策</h3>
+      <p>ChatGPT・Gemini・Perplexityで自社が言及されるか、AI検索10問テストで定点観測します。SEO記事をAIが拾いやすい構造（具体例・実数値・FAQ・構造化データ）に変えていく設計を支援します。Googleのアプデは年に数回、AIは毎日変わります。</p>
       <ul>
-        <li>分析 → 優先順位づけ → 実行整理 → 再分析</li>
-        <li>KPIと権限確認の型化</li>
-        <li>Multi-brand前提の改善運用設計</li>
+        <li>AI検索の定点観測（4LLM）</li>
+        <li>LLM対応のコンテンツ構造設計</li>
+        <li>構造化データ・FAQ整備</li>
       </ul>
     </div>
 
     <div class="pillar">
-      <div class="p-num">Pillar 03</div>
-      <h3>Commerce / Reporting Ops</h3>
-      <p>ソーシャルコマース等の領域では、日次運用や月次レポートを人力依存のまま増やすのではなく、SOPとスクリプトで再利用可能な運用基盤に変えることを進めています。</p>
+      <div class="p-num">Layer 03</div>
+      <h3>AI Ops / 伴走支援</h3>
+      <p>AIアップデートで何が変わったか、何ができるようになったかを定期的に共有します。業務効率化セミナーや社内向けのAI活用設計、生成AIワークフローの導入伴走まで対応。「困ったらまず相談」のポジションで継続的に関わります。</p>
       <ul>
-        <li>運用ドメインの分解</li>
-        <li>SOP化</li>
-        <li>レポート・データ処理の自動化</li>
+        <li>AI活用ワークフロー設計</li>
+        <li>業務効率化セミナー</li>
+        <li>顧問・伴走型の継続支援</li>
       </ul>
     </div>
 
     <div class="pillar">
-      <div class="p-num">Pillar 04</div>
-      <h3>Internal AI Operations</h3>
-      <p>AI活用は「使う」だけではなく、誰が何を担当し、どこで人間判断を残すかまで設計する必要があります。実務フローに埋め込めるAI運用を組み立てます。</p>
+      <div class="p-num">Foundation</div>
+      <h3>実務基盤の整備</h3>
+      <p>3層を支える土台として、EC運用・コマース運用・SOP化・自動化スクリプト整備を担当します。Generator → Inspector → Fixer のパイプライン設計で、AI同士の役割分担と人間判断ポイントを明確にした運用基盤を作ります。</p>
       <ul>
-        <li>AI同士の役割分担設計</li>
-        <li>Handoff文面・レビュー観点整備</li>
-        <li>実務に埋め込めるAI運用の標準化</li>
+        <li>EC / Growth Ops 設計</li>
+        <li>SOP化 / 自動化スクリプト</li>
+        <li>AI役割分担パイプライン</li>
       </ul>
     </div>
   </div>
@@ -254,45 +347,82 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 
 <!-- ============ FEATURED WORK ============ -->
 <section class="sec">
-  <div class="sec-divider"><span class="diamond">◆</span>Section 02 · Representative Work<span class="diamond">◆</span></div>
-  <div class="sec-label">What I Build</div>
-  <h2 style="font-size:28px;margin-bottom:32px;letter-spacing:-.01em">実務の型として整えていること</h2>
+  <div class="sec-divider"><span class="diamond">◆</span>Section 02 · Featured Work<span class="diamond">◆</span></div>
+  <div class="sec-label">Active Operations <span class="tac-mark">◆◆◆</span></div>
+  <h2 style="font-size:28px;margin-bottom:32px;letter-spacing:-.01em">進行中のミッション</h2>
 
-  <div class="works">
+  <div class="works radar-bg">
+    <div class="radar-sweep"></div>
 
     <div class="work">
       <div class="work-head">
         <div class="work-title">
           <span class="code">MISSION-01</span>
-          Commerce Ops Foundation
+          Multi-Mall Commerce Consulting
         </div>
+        <span class="status-badge live">稼働中</span>
       </div>
       <p class="work-summary">
-        ソーシャルコマース領域の運用を、属人的な実務から再利用可能な運用基盤へ切り替えるための型を整えています。業務を複数ドメインで分解し、SOP化と自動化スクリプト整備を組み合わせることで、日次確認、在庫確認、月次レポート作成を回しやすくしています。
+        ソーシャルコマース + 多モール展開のコンサル案件です。実作業代行ではなく、戦略設計・進捗管理・型化に集中し、4週間ロードマップで「棚卸し → 主力商品の勝ち筋分析 → セラー運営の最低限整備 → 横展開検証」を回します。SOP整備と自動化スクリプトで、属人運用を再利用可能な基盤に置き換えています。
       </p>
       <div class="work-facts">
-        <span class="work-fact"><span class="n">9</span>ドメイン管理</span>
-        <span class="work-fact"><span class="n">6</span>SOP整備済</span>
-        <span class="work-fact"><span class="n">13</span>自動化スクリプト</span>
-        <span class="work-fact">サンプルデータ全パス確認済</span>
+        <span class="work-fact">Multi-Mall (TikTok / Amazon / 楽天)</span>
+        <span class="work-fact"><span class="n">5</span>SOP整備済</span>
+        <span class="work-fact"><span class="n">7</span>領域リスクマップ</span>
+        <span class="work-fact">自走判定3軸</span>
+      </div>
+      <div class="work-progress">
+        <div class="wp-row">
+          <span class="wp-label">SOP整備</span>
+          <span class="wp-bar"><span class="wp-fill" data-pct="100"></span></span>
+          <span class="wp-pct">100%</span>
+        </div>
+        <div class="wp-row">
+          <span class="wp-label">リスクマップ</span>
+          <span class="wp-bar"><span class="wp-fill" data-pct="100"></span></span>
+          <span class="wp-pct">100%</span>
+        </div>
+        <div class="wp-row">
+          <span class="wp-label">クライアント自走</span>
+          <span class="wp-bar"><span class="wp-fill" data-pct="35"></span></span>
+          <span class="wp-pct">35%</span>
+        </div>
       </div>
     </div>
 
-    <div class="work pre-kickoff">
+    <div class="work">
       <div class="work-head">
         <div class="work-title">
           <span class="code">MISSION-02</span>
-          Retail Operations Design
+          Retail Digital Marketing
         </div>
+        <span class="status-badge live">稼働中</span>
       </div>
       <p class="work-summary">
-        リテール領域では、公式サイト調査、SEO観点の把握、初回ヒアリング設計、事前準備パック作成までをひとつの流れとして設計しています。着手前から論点を整理し、初回打ち合わせの質を上げる進め方を型化しています。
+        リテール系クライアントの基幹システム改善・EC改善・周辺業務整理を担当しています。キックオフ前にPhase 0診断（公開情報のみで取れるSEO・LLMO・CV導線・構造化データのbaseline）を完了させ、初週から優先順位を合意した状態で着手しました。事前準備で論点を絞り、初動の質を上げる進め方が定着しています。
       </p>
       <div class="work-facts">
         <span class="work-fact">基幹システム改善</span>
         <span class="work-fact">EC改善</span>
-        <span class="work-fact">周辺業務整理</span>
-        <span class="work-fact">準備パック完成</span>
+        <span class="work-fact">SEO / LLMO 診断</span>
+        <span class="work-fact">業務委託 / 月次稼働</span>
+      </div>
+      <div class="work-progress">
+        <div class="wp-row">
+          <span class="wp-label">Phase 0 診断</span>
+          <span class="wp-bar"><span class="wp-fill" data-pct="100"></span></span>
+          <span class="wp-pct">100%</span>
+        </div>
+        <div class="wp-row">
+          <span class="wp-label">優先順位合意</span>
+          <span class="wp-bar"><span class="wp-fill" data-pct="100"></span></span>
+          <span class="wp-pct">100%</span>
+        </div>
+        <div class="wp-row">
+          <span class="wp-label">Quick Wins実装</span>
+          <span class="wp-bar"><span class="wp-fill" data-pct="45"></span></span>
+          <span class="wp-pct">45%</span>
+        </div>
       </div>
     </div>
 
@@ -300,17 +430,35 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
       <div class="work-head">
         <div class="work-title">
           <span class="code">MISSION-03</span>
-          Apparel EC Discovery Setup
+          EC Growth Readiness System
         </div>
+        <span class="status-badge prep">運用検証済 / Inquiry受付中</span>
       </div>
       <p class="work-summary">
-        アパレルECでは、既存の保守支援関係からEC成長支援へ広げる際の初回discoveryの型を整えています。複数ブランドを前提にした案件でも、初回で何を確認すれば次の分析や提案につながるかをテンプレートとして残しています。
+        Shopifyベースのアパレル・コスメEC案件向けに、Discovery → 分析 → Brief → Proposal までの型を整えています。Multi-brand案件でも初回で何を確認すれば次の分析や提案につながるかを9ファイル構成で定義済み。架空マルチブランドのサンプル一式（Beauty / Fashion）で運用検証を完了しています。
       </p>
       <div class="work-facts">
-        <span class="work-fact">Shopify Apparel Group</span>
-        <span class="work-fact"><span class="n">10+</span>ブランド前提</span>
-        <span class="work-fact">Readiness Map整備</span>
-        <span class="work-fact">Discovery Template</span>
+        <span class="work-fact">Shopify Multi-Brand対応</span>
+        <span class="work-fact"><span class="n">9</span>ファイル構成</span>
+        <span class="work-fact">Discovery → Proposal の型</span>
+        <span class="work-fact">Sample 2件で検証済</span>
+      </div>
+      <div class="work-progress">
+        <div class="wp-row">
+          <span class="wp-label">Readiness Map</span>
+          <span class="wp-bar"><span class="wp-fill" data-pct="100"></span></span>
+          <span class="wp-pct">100%</span>
+        </div>
+        <div class="wp-row">
+          <span class="wp-label">サンプル運用検証</span>
+          <span class="wp-bar"><span class="wp-fill" data-pct="100"></span></span>
+          <span class="wp-pct">100%</span>
+        </div>
+        <div class="wp-row">
+          <span class="wp-label">実案件着手</span>
+          <span class="wp-bar"><span class="wp-fill" data-pct="0"></span></span>
+          <span class="wp-pct">受付中</span>
+        </div>
       </div>
     </div>
 
@@ -318,17 +466,35 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
       <div class="work-head">
         <div class="work-title">
           <span class="code">MISSION-04</span>
-          LLMO Offer System
+          LLMO Offer + Media Asset
         </div>
+        <span class="status-badge hold">内部整備中 / 段階的公開</span>
       </div>
       <p class="work-summary">
-        LLMO領域では、単発の提案書ではなく、調査から提案送付前確認までを一連の運用として設計しています。調査、提案、レビュー、鮮度確認までを分断せずに扱えるように整えています。
+        LLMO領域では、業者向けの提案システムと、業界向けの比較・診断メディアを並行整備しています。AI検索10問テスト・サイト構造チェック・レポート生成まで自動化し、調査から提案送付前確認までを一連の運用として設計。メディア側はSEO/LLMOの実験場兼営業資産として、業界向けのつるはしとシャベルを作ります。
       </p>
       <div class="work-facts">
-        <span class="work-fact">複数ドメイン対象</span>
+        <span class="work-fact">AI検索 4LLM 10問テスト</span>
         <span class="work-fact">Brief → Propose → Check</span>
-        <span class="work-fact">Review Gate 運用</span>
-        <span class="work-fact">Freshness Check</span>
+        <span class="work-fact">Review Gate / Freshness Check</span>
+        <span class="work-fact">業界向け比較メディア構想</span>
+      </div>
+      <div class="work-progress">
+        <div class="wp-row">
+          <span class="wp-label">提案システム整備</span>
+          <span class="wp-bar"><span class="wp-fill" data-pct="85"></span></span>
+          <span class="wp-pct">85%</span>
+        </div>
+        <div class="wp-row">
+          <span class="wp-label">Review Gate運用</span>
+          <span class="wp-bar"><span class="wp-fill" data-pct="70"></span></span>
+          <span class="wp-pct">70%</span>
+        </div>
+        <div class="wp-row">
+          <span class="wp-label">メディアMVP</span>
+          <span class="wp-bar"><span class="wp-fill" data-pct="20"></span></span>
+          <span class="wp-pct">20%</span>
+        </div>
       </div>
     </div>
 
@@ -337,30 +503,30 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 
 <!-- ============ WORKING STYLE ============ -->
 <section class="sec">
-  <div class="sec-divider"><span class="diamond">◆</span>Section 03 · Working Style<span class="diamond">◆</span></div>
-  <div class="sec-label">Operating Principles</div>
-  <h2 style="font-size:28px;margin-bottom:32px;letter-spacing:-.01em">働き方の原則</h2>
+  <div class="sec-divider"><span class="diamond">◆</span>Section 03 · Tactics<span class="diamond">◆</span></div>
+  <div class="sec-label">Tactics <span class="tac-mark">◉◉◉◉</span></div>
+  <h2 style="font-size:28px;margin-bottom:32px;letter-spacing:-.01em">戦術</h2>
 
   <div class="style-grid">
     <div class="style-card">
       <div class="num">01</div>
-      <h4>運用フローまで整える</h4>
-      <p>調査や分析で終わらせず、再利用可能な運用フローに落とすところまで設計します。</p>
+      <h4>事前準備で論点を絞る</h4>
+      <p>初回ヒアリング前に公開情報で取れる診断を完了させ、優先順位を合意した状態で着手します。初動の質を上げる進め方です。</p>
     </div>
     <div class="style-card">
       <div class="num">02</div>
-      <h4>AI × 人間判断を設計する</h4>
-      <p>AIに任せる範囲と、人間の判断を残す範囲を明確に切り分けて運用します。</p>
+      <h4>Generator → Inspector → Fixer</h4>
+      <p>生成・検査・修正をAIで分業させるパイプライン設計。CI/CDの発想で品質を担保し、人間判断ポイントを明確にします。</p>
     </div>
     <div class="style-card">
       <div class="num">03</div>
-      <h4>属人業務をテンプレ化</h4>
-      <p>個人の経験に依存している業務を、テンプレートと手順書に落とし込みます。</p>
+      <h4>SOPと自動化で属人を外す</h4>
+      <p>個人経験に依存している業務をSOPと自動化スクリプトに落とし、再利用可能な運用基盤に変えます。</p>
     </div>
     <div class="style-card">
       <div class="num">04</div>
-      <h4>判断材料から揃える</h4>
-      <p>施策を急がず、まず判断できる材料を揃えることから始めます。</p>
+      <h4>納品せず、自走まで伴走する</h4>
+      <p>レポート納品で終わりではなく、クライアント自身が運用を継続できる状態（自走判定3軸クリア）を目標にします。</p>
     </div>
   </div>
 </section>
@@ -373,7 +539,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 
   <div class="ai-card">
     <p>
-      AIは「便利な執筆補助」としてではなく、役割分担された実務パートナーとして使っています。調査、構成、実装、レビューのどこを誰が持つかを切り分け、人間の判断が必要な箇所だけを残す形で運用しています。この設計を、単発のタスクではなく、クライアント業務のワークフロー全体に組み込むのが、他の「AI活用」との違いです。
+      AIは「便利な執筆補助」ではなく、役割分担された実務パートナーとして使っています。Generator（生成）、Inspector（検査）、Fixer（修正）のロールを切り分け、CI/CDのような品質パイプラインを構築。クライアント業務のワークフロー全体に組み込み、人間の判断が必要な箇所だけを残す形で運用しています。AIアップデートは年単位ではなく毎日起きる前提で、設計も継続的に更新します。これが他の「AI活用」との違いです。
     </p>
   </div>
 </section>
@@ -382,14 +548,16 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 <section class="sec" style="padding-top:40px">
   <div class="cta">
     <h2>
-      <span class="code">◉ Consultation Window Open</span>
+      <span class="code">◉ Incoming Transmission Welcome</span>
       ご相談を受け付けています
     </h2>
     <p>
-      壁打ち段階でも、運用整理の相談でも対応可能です。いきなり実行支援に入るのではなく、まず何を揃えれば前に進めるかを整理します。ご相談は下のボタンからご連絡ください。
+      壁打ち段階でも、運用整理の相談でも対応可能です。SEOで詰まっている、AI検索で名前が出ない、ECの優先順位が分からない、社内のAI活用が散らかっている — どこからでも入れます。いきなり実行支援に入るのではなく、まず何を揃えれば前に進めるかを整理します。
     </p>
     <div class="cta-actions">
-      <a href="mailto:yu.sato@bipe.co.jp" class="cta-btn">Contact</a>
+      <a href="mailto:yu.sato@bipe.co.jp?subject=%E3%83%9D%E3%83%BC%E3%83%88%E3%83%95%E3%82%A9%E3%83%AA%E3%82%AA%E7%B5%8C%E7%94%B1%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" class="cta-btn">
+        ▸ Establish Connection
+      </a>
     </div>
   </div>
 </section>
@@ -399,6 +567,104 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 <footer class="footer">
   <span class="sig">◆</span>CHANOTIN · 2026<span class="sig" style="margin-left:8px;margin-right:0">◆</span>
 </footer>
+
+<script>
+(function(){
+  const codecSeq = document.getElementById('codecSeq');
+  const codecSkip = document.getElementById('codecSkip');
+  const powerOn = document.getElementById('powerOn');
+
+  // セッション中1回限り
+  const SHOWN_KEY = 'chanotin_codec_shown';
+  const alreadyShown = sessionStorage.getItem(SHOWN_KEY);
+
+  if (alreadyShown) {
+    // 2回目以降は CODEC スキップ、電源ONも軽量に
+    codecSeq.style.display = 'none';
+    powerOn.style.display = 'none';
+    initContent();
+  } else {
+    // 初回: 電源ON → CODECシーケンス → コンテンツ
+    setTimeout(() => {
+      // CODECシーケンスは2.0秒で終了
+      setTimeout(closeCodec, 2000);
+    }, 350); // 電源ONフラッシュ後
+
+    codecSkip.addEventListener('click', closeCodec);
+  }
+
+  function closeCodec() {
+    codecSeq.classList.add('hide');
+    sessionStorage.setItem(SHOWN_KEY, '1');
+    setTimeout(() => {
+      codecSeq.style.display = 'none';
+      initContent();
+    }, 400);
+  }
+
+  function initContent() {
+    typewriter();
+    animateProgress();
+  }
+
+  // ===== タイプライター =====
+  function typewriter() {
+    const line1 = document.getElementById('typeLine1');
+    const line2 = document.getElementById('typeLine2');
+    const text1 = line1.textContent;
+    const text2 = line2.textContent;
+    line1.textContent = '';
+    line2.textContent = '';
+
+    let i = 0;
+    const typeSpeed = 55;
+
+    function typeLine1() {
+      if (i < text1.length) {
+        line1.textContent += text1.charAt(i);
+        i++;
+        setTimeout(typeLine1, typeSpeed);
+      } else {
+        line1.classList.add('done');
+        line2.style.visibility = 'visible';
+        setTimeout(typeLine2, 200);
+      }
+    }
+
+    let j = 0;
+    function typeLine2() {
+      if (j < text2.length) {
+        line2.textContent += text2.charAt(j);
+        j++;
+        setTimeout(typeLine2, typeSpeed);
+      } else {
+        line2.classList.add('done');
+      }
+    }
+
+    typeLine1();
+  }
+
+  // ===== 進捗バーアニメ（IntersectionObserverで発火） =====
+  function animateProgress() {
+    const fills = document.querySelectorAll('.wp-fill');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const pct = entry.target.dataset.pct;
+          entry.target.style.width = pct + '%';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    fills.forEach(f => {
+      f.style.width = '0%';
+      observer.observe(f);
+    });
+  }
+})();
+</script>
 
 </body>
 </html>
