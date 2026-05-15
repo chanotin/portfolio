@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CHANOTIN // Portfolio</title>
-<meta name="description" content="SEO × LLMO × AI活用の3層で、事業の集客と運用基盤を一気通貫で設計。EC、リテール、コマース運用、社内オペレーション整備を横断する事業オペレーター。">
+<meta name="description" content="EC・広告運用・SEO × LLMO × AI活用の3層で、事業の集客と運用基盤を一気通貫で設計。EC、コマース、デジタルマーケティング、AIオペレーション導入を横断する事業オペレーター。">
 <style>
 :root{
   --bg:#12160e; --surface:#1e2416; --surface-2:#2a3020;
@@ -18,13 +18,9 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:14px;line-height:1.7;-webkit-font-smoothing:antialiased;letter-spacing:.01em}
 
-/* 走査線＋グリッド（ダッシュボードと同じ） */
 body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,rgba(168,192,102,.025) 0px,rgba(168,192,102,.025) 1px,transparent 1px,transparent 2px),repeating-linear-gradient(90deg,rgba(255,140,26,.02) 0px,rgba(255,140,26,.02) 1px,transparent 1px,transparent 80px),repeating-linear-gradient(0deg,rgba(255,140,26,.02) 0px,rgba(255,140,26,.02) 1px,transparent 1px,transparent 80px);pointer-events:none;z-index:100}
-
-/* 極薄ノイズ */
 body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");opacity:.025;pointer-events:none;z-index:99;mix-blend-mode:screen}
 
-/* 画面四隅ブラケット */
 .frame-brackets{position:fixed;inset:10px;pointer-events:none;z-index:50}
 .frame-brackets span{position:absolute;width:24px;height:24px;border:1px solid var(--accent);opacity:.4}
 .frame-brackets span.tl{top:0;left:0;border-right:none;border-bottom:none}
@@ -42,7 +38,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .tb-status .led{width:8px;height:8px;border-radius:50%;background:var(--good);box-shadow:0 0 8px var(--good);animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
 
-/* ===== SECTION WRAPPER ===== */
+/* ===== SECTION ===== */
 .page{max-width:1080px;margin:0 auto;padding:0 40px}
 .sec{padding:80px 0;position:relative}
 .sec-divider{display:flex;align-items:center;gap:12px;margin-bottom:32px;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.22em;color:var(--text-3)}
@@ -64,7 +60,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .hero-meta{display:flex;gap:20px;margin-top:40px;padding-top:24px;border-top:1px dashed var(--border);font-family:var(--mono);font-size:11px;color:var(--text-3);text-transform:uppercase;letter-spacing:.1em;flex-wrap:wrap}
 .hero-meta span strong{color:var(--text-2);font-weight:600}
 
-/* ===== WHAT I DO (Service Pillars) ===== */
+/* ===== PILLARS ===== */
 .pillars{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .pillar{background:var(--surface);border:1px solid var(--border);padding:28px 30px;position:relative}
 .pillar::before{content:'';position:absolute;top:-1px;left:-1px;width:14px;height:14px;border-top:2px solid var(--accent);border-left:2px solid var(--accent)}
@@ -76,7 +72,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .pillar ul li{font-family:var(--mono);font-size:11.5px;color:var(--text-3);padding:4px 0;padding-left:16px;position:relative;text-transform:uppercase;letter-spacing:.06em}
 .pillar ul li::before{content:'▸';position:absolute;left:0;color:var(--good)}
 
-/* ===== FEATURED WORK ===== */
+/* ===== WORKS ===== */
 .works{display:grid;gap:16px}
 .work{background:var(--surface);border:1px solid var(--border);padding:26px 30px;position:relative;transition:border-color .15s}
 .work::before{content:'';position:absolute;top:-1px;left:-1px;width:10px;height:10px;border-top:2px solid var(--good);border-left:2px solid var(--good)}
@@ -90,15 +86,21 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .status-badge{font-family:var(--mono);font-size:10px;font-weight:700;padding:5px 11px;text-transform:uppercase;letter-spacing:.12em;border:1px solid;white-space:nowrap;flex-shrink:0}
 .status-badge.live{background:rgba(168,192,102,.12);color:var(--good);border-color:var(--good);animation:livePulse 2s infinite}
 @keyframes livePulse{0%,100%{box-shadow:0 0 0 rgba(168,192,102,.5)}50%{box-shadow:0 0 10px rgba(168,192,102,.3)}}
-.status-badge.pre-kickoff{background:rgba(212,168,92,.12);color:var(--purple);border-color:var(--purple)}
 .status-badge.prep{background:rgba(255,184,0,.12);color:var(--warn);border-color:var(--warn)}
 .status-badge.hold{background:rgba(168,166,140,.12);color:var(--text-2);border-color:var(--border-2)}
 .work-summary{font-size:14px;line-height:1.85;color:var(--text-2);margin-bottom:18px}
 .work-facts{display:flex;flex-wrap:wrap;gap:8px;padding-top:14px;border-top:1px dashed var(--border)}
 .work-fact{font-family:var(--mono);font-size:10.5px;padding:4px 10px;background:var(--surface-2);color:var(--text-2);border:1px solid var(--border);text-transform:uppercase;letter-spacing:.08em}
 .work-fact .n{color:var(--good);font-weight:700;margin-right:4px}
+.work-progress{margin-top:14px;padding-top:14px;border-top:1px dashed var(--border)}
+.wp-row{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:10.5px;color:var(--text-2);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+.wp-row:last-child{margin-bottom:0}
+.wp-label{flex-shrink:0;width:130px;color:var(--text-3)}
+.wp-bar{flex:1;height:6px;background:var(--surface-2);border:1px solid var(--border);position:relative;overflow:hidden}
+.wp-fill{height:100%;background:var(--good);box-shadow:0 0 8px rgba(168,192,102,.4);transition:width 1.2s ease-out}
+.wp-pct{flex-shrink:0;width:42px;text-align:right;color:var(--text);font-weight:700}
 
-/* ===== WORKING STYLE ===== */
+/* ===== STYLE GRID ===== */
 .style-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
 .style-card{background:var(--surface);border-left:3px solid var(--accent);padding:20px 24px}
 .style-card:nth-child(2){border-left-color:var(--good)}
@@ -111,7 +113,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .style-card h4{font-size:14px;font-weight:700;margin-bottom:6px}
 .style-card p{font-size:13px;line-height:1.75;color:var(--text-2)}
 
-/* ===== AI OPERATIONS ===== */
+/* ===== AI CARD ===== */
 .ai-card{background:var(--surface);border:1px solid var(--border);padding:32px 36px;position:relative}
 .ai-card::before{content:'';position:absolute;top:-1px;left:-1px;width:14px;height:14px;border-top:2px solid var(--accent);border-left:2px solid var(--accent)}
 .ai-card::after{content:'';position:absolute;bottom:-1px;right:-1px;width:14px;height:14px;border-bottom:2px solid var(--accent);border-right:2px solid var(--accent)}
@@ -124,8 +126,12 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .cta h2 .code{font-family:var(--mono);font-size:10px;font-weight:400;color:var(--accent);display:block;margin-bottom:10px;text-transform:uppercase;letter-spacing:.2em}
 .cta p{font-size:14.5px;line-height:1.85;color:var(--text-2);max-width:580px;margin:0 auto 28px}
 .cta-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-.cta-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;font-family:var(--mono);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;text-decoration:none;border:1px solid var(--accent);color:var(--accent);background:transparent;transition:all .15s;clip-path:polygon(0 0,100% 0,100% calc(100% - 6px),calc(100% - 6px) 100%,0 100%)}
+.cta-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;font-family:var(--mono);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;text-decoration:none;border:1px solid var(--accent);color:var(--accent);background:transparent;transition:all .15s;clip-path:polygon(0 0,100% 0,100% calc(100% - 6px),calc(100% - 6px) 100%,0 100%);cursor:pointer}
 .cta-btn:hover{background:var(--accent);color:#0d1108}
+.cta-btn{position:relative}
+.cta-btn::before{content:'[ ';color:var(--accent);margin-right:4px;font-weight:400;letter-spacing:0}
+.cta-btn::after{content:' ]';color:var(--accent);margin-left:4px;font-weight:400;letter-spacing:0}
+.cta-btn:hover::before,.cta-btn:hover::after{color:#0d1108}
 
 /* ===== FOOTER ===== */
 .footer{padding:40px;text-align:center;font-family:var(--mono);font-size:10px;color:var(--text-3);text-transform:uppercase;letter-spacing:.18em;border-top:1px solid var(--border);margin-top:40px}
@@ -145,22 +151,10 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
   .cta h2{font-size:22px}
 }
 
-@media print{
-  body::before,body::after,.frame-brackets{display:none}
-  .topbar{position:static}
-  .status-badge.live{animation:none}
-  html,body{background:#fff;color:#000}
-  .pillar,.work,.ai-card,.cta{background:#fff;border-color:#000}
-  .cta{clip-path:none}
-}
-
-/* ========== FULL MGS PACKAGE ========== */
-
-/* CRT電源ON 白フラッシュ */
+/* ===== MGS PACKAGE ===== */
 .power-on{position:fixed;inset:0;background:#fff;z-index:99999;animation:powerOn .35s ease-out forwards;pointer-events:none}
 @keyframes powerOn{0%{opacity:0}10%{opacity:1}100%{opacity:0;visibility:hidden}}
 
-/* CODEC通信シーケンス */
 .codec-seq{position:fixed;inset:0;background:#0a0d06;z-index:9998;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--mono);color:var(--good);padding:40px;transition:opacity .4s ease-out}
 .codec-seq.hide{opacity:0;visibility:hidden;pointer-events:none}
 .codec-seq::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.4) 0px,rgba(0,0,0,.4) 1px,transparent 1px,transparent 3px);pointer-events:none}
@@ -183,36 +177,16 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .codec-skip{position:absolute;bottom:20px;right:20px;font-size:10px;color:var(--text-3);letter-spacing:.14em;text-transform:uppercase;cursor:pointer;padding:6px 12px;border:1px solid var(--border-2);background:transparent;font-family:var(--mono)}
 .codec-skip:hover{color:var(--text);border-color:var(--accent)}
 
-/* HUD座標 (右上に常時表示) */
 .hud-coord{position:fixed;top:80px;right:24px;font-family:var(--mono);font-size:9.5px;color:var(--text-3);letter-spacing:.1em;text-align:right;line-height:1.7;pointer-events:none;z-index:5;text-transform:uppercase}
 .hud-coord .v{color:var(--accent)}
 @media(max-width:1100px){.hud-coord{display:none}}
 
-/* タイプライター(Hero h1用) */
 .typewriter{display:inline-block;border-right:.08em solid var(--accent);animation:caret .8s steps(1) infinite}
 @keyframes caret{50%{border-color:transparent}}
 .typewriter.done{border-right:none;animation:none}
 
-/* MISSION 進捗バー */
-.work-progress{margin-top:14px;padding-top:14px;border-top:1px dashed var(--border)}
-.wp-row{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:10.5px;color:var(--text-2);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
-.wp-row:last-child{margin-bottom:0}
-.wp-label{flex-shrink:0;width:130px;color:var(--text-3)}
-.wp-bar{flex:1;height:6px;background:var(--surface-2);border:1px solid var(--border);position:relative;overflow:hidden}
-.wp-fill{height:100%;background:var(--good);box-shadow:0 0 8px rgba(168,192,102,.4);transition:width 1.2s ease-out}
-.wp-pct{flex-shrink:0;width:42px;text-align:right;color:var(--text);font-weight:700}
-
-/* CTA 角括弧装飾強化 */
-.cta-btn{position:relative}
-.cta-btn::before{content:'[ ';color:var(--accent);margin-right:4px;font-weight:400;letter-spacing:0}
-.cta-btn::after{content:' ]';color:var(--accent);margin-left:4px;font-weight:400;letter-spacing:0}
-.cta-btn:hover::before,.cta-btn:hover::after{color:#0d1108}
-
-/* Tactical Markers装飾 */
 .tac-mark{font-family:var(--mono);color:var(--accent);opacity:.5;font-size:10px;letter-spacing:.2em;display:inline-block;margin:0 4px;vertical-align:middle}
-.section-tac{position:absolute;top:80px;left:0;font-family:var(--mono);font-size:9px;color:var(--text-3);letter-spacing:.16em;writing-mode:vertical-rl;text-transform:uppercase}
 
-/* レーダースキャン (Featured Workセクション) */
 .radar-bg{position:relative;overflow:hidden;isolation:isolate}
 .radar-sweep{position:absolute;inset:0;pointer-events:none;opacity:.07;z-index:0}
 .radar-sweep::before{content:'';position:absolute;top:50%;left:50%;width:200%;height:200%;transform-origin:0 0;background:conic-gradient(from 0deg,transparent 0deg,var(--accent) 30deg,transparent 60deg);animation:radarSweep 6s linear infinite}
@@ -222,10 +196,8 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 </head>
 <body>
 
-<!-- CRT POWER ON -->
 <div class="power-on" id="powerOn"></div>
 
-<!-- CODEC SEQUENCE -->
 <div class="codec-seq" id="codecSeq">
   <div class="codec-frame">
     <span class="corner-tl"></span>
@@ -242,7 +214,6 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
   </div>
 </div>
 
-<!-- HUD COORDINATES -->
 <div class="hud-coord">
   <div>LAT <span class="v">35.6804°N</span></div>
   <div>LONG <span class="v">139.7690°E</span></div>
@@ -250,13 +221,11 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
   <div style="margin-top:6px;color:var(--accent)">◆ FOX UNIT ◆</div>
 </div>
 
-<!-- FRAME BRACKETS -->
 <div class="frame-brackets">
   <span class="tl"></span><span class="tr"></span>
   <span class="bl"></span><span class="br"></span>
 </div>
 
-<!-- TOPBAR -->
 <header class="topbar">
   <div class="tb-brand">
     <div class="tb-logo">CH</div>
@@ -270,19 +239,20 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 
 <div class="page">
 
-<!-- ============ HERO ============ -->
+<!-- HERO -->
 <section class="hero">
   <div class="tagline">Operator Profile · 2026</div>
   <h1>
-    <span class="typewriter" id="typeLine1">SEO・LLMO・AI活用を、</span><br>
+    <span class="typewriter" id="typeLine1">EC・広告・AIを、</span><br>
     <span class="accent typewriter" id="typeLine2" style="visibility:hidden">運用が回る形まで設計する。</span>
   </h1>
   <p class="lede">
-    SEO・LLMO（AI検索対策）・AI活用支援の3層で、事業の集客と運用基盤をまとめて整えるオペレーターです。「やってるのに上がらない」を数値で診断し、AI検索時代に拾われる構造を設計し、現場で回るSOPまで落とします。提案で終わらせず、運用が回るところまで責任を持ちます。
+    EC運用・デジタル広告・SEO / LLMO（AI検索対策）・AIワークフロー設計の4軸で、事業の集客と運用基盤をまとめて整えるオペレーターです。「やってるのに上がらない」「施策はあるのに回らない」を数値と構造で診断し、現場で動くSOPまで落とします。提案で終わらせず、自走できる状態まで責任を持ちます。
   </p>
   <div class="hero-keywords">
-    <div class="hero-kw">SEO / 集客診断</div>
-    <div class="hero-kw">LLMO / AI検索対策</div>
+    <div class="hero-kw">EC / Commerce Ops</div>
+    <div class="hero-kw">Meta / TikTok / Google 広告</div>
+    <div class="hero-kw">SEO / LLMO</div>
     <div class="hero-kw">AI Ops / 伴走支援</div>
   </div>
   <div class="hero-meta">
@@ -292,7 +262,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
   </div>
 </section>
 
-<!-- ============ WHAT I DO ============ -->
+<!-- WHAT I DO -->
 <section class="sec">
   <div class="sec-divider"><span class="diamond">◆</span>Section 01 · What I Do<span class="diamond">◆</span></div>
   <div class="sec-label">Service Pillars</div>
@@ -302,7 +272,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
     <div class="pillar">
       <div class="p-num">Layer 01</div>
       <h3>SEO / 集客診断</h3>
-      <p>「やってるのに上がらない」を数値で診断します。Ahrefsベースのドメイン分析、カニバリ・内部リンク・コンテンツ構造を確認し、伸ばせるレバーから順番に整理します。レポートで終わらせず、改善の優先順位を運用側に渡します。</p>
+      <p>「やってるのに上がらない」を数値で診断します。Ahrefsベースのドメイン分析・カニバリ・内部リンク・コンテンツ構造を確認し、伸ばせるレバーから順番に整理。レポートで終わらせず、改善の優先順位を運用側に渡します。</p>
       <ul>
         <li>Ahrefsベースのドメイン診断</li>
         <li>カニバリ・内部リンク整備</li>
@@ -313,7 +283,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
     <div class="pillar">
       <div class="p-num">Layer 02</div>
       <h3>LLMO / AI検索対策</h3>
-      <p>ChatGPT・Gemini・Perplexityで自社が言及されるか、AI検索10問テストで定点観測します。SEO記事をAIが拾いやすい構造（具体例・実数値・FAQ・構造化データ）に変えていく設計を支援します。Googleのアプデは年に数回、AIは毎日変わります。</p>
+      <p>ChatGPT・Gemini・Perplexityで自社が言及されるか、AI検索テストで定点観測します。SEO記事をAIが拾いやすい構造（具体例・実数値・FAQ・構造化データ）に変えていく設計を支援します。Googleのアプデは年に数回、AIは毎日変わります。</p>
       <ul>
         <li>AI検索の定点観測（4LLM）</li>
         <li>LLM対応のコンテンツ構造設計</li>
@@ -324,7 +294,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
     <div class="pillar">
       <div class="p-num">Layer 03</div>
       <h3>AI Ops / 伴走支援</h3>
-      <p>AIアップデートで何が変わったか、何ができるようになったかを定期的に共有します。業務効率化セミナーや社内向けのAI活用設計、生成AIワークフローの導入伴走まで対応。「困ったらまず相談」のポジションで継続的に関わります。</p>
+      <p>AIアップデートで何が変わったか、何ができるようになったかを定期的に共有します。社内向けのAI活用設計・生成AIワークフローの導入伴走・業務効率化セミナーまで対応。「困ったらまず相談」のポジションで継続的に関わります。</p>
       <ul>
         <li>AI活用ワークフロー設計</li>
         <li>業務効率化セミナー</li>
@@ -334,18 +304,18 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 
     <div class="pillar">
       <div class="p-num">Foundation</div>
-      <h3>実務基盤の整備</h3>
-      <p>3層を支える土台として、EC運用・コマース運用・SOP化・自動化スクリプト整備を担当します。Generator → Inspector → Fixer のパイプライン設計で、AI同士の役割分担と人間判断ポイントを明確にした運用基盤を作ります。</p>
+      <h3>EC / 広告運用 · 実務基盤</h3>
+      <p>3層を支える実務基盤として、EC運用・デジタル広告運用（Meta / TikTok / Google）・CRM設計・KPIダッシュボード構築を担当します。数値設計から日次オペレーションまで、「回る状態」に整えることを目標にします。</p>
       <ul>
-        <li>EC / Growth Ops 設計</li>
-        <li>SOP化 / 自動化スクリプト</li>
-        <li>AI役割分担パイプライン</li>
+        <li>Meta / TikTok / Google 広告運用</li>
+        <li>EC / TikTok Shop 立ち上げ・運用</li>
+        <li>CRM設計 / KPIダッシュボード構築</li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- ============ FEATURED WORK ============ -->
+<!-- FEATURED WORK -->
 <section class="sec">
   <div class="sec-divider"><span class="diamond">◆</span>Section 02 · Featured Work<span class="diamond">◆</span></div>
   <div class="sec-label">Active Operations <span class="tac-mark">◆◆◆</span></div>
@@ -354,57 +324,22 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
   <div class="works radar-bg">
     <div class="radar-sweep"></div>
 
+    <!-- M-01 -->
     <div class="work">
       <div class="work-head">
         <div class="work-title">
           <span class="code">MISSION-01</span>
-          Multi-Mall Commerce Consulting
+          Retail Digital Marketing · 広告 / SEO / オペレーション改善
         </div>
         <span class="status-badge live">稼働中</span>
       </div>
       <p class="work-summary">
-        ソーシャルコマース + 多モール展開のコンサル案件です。実作業代行ではなく、戦略設計・進捗管理・型化に集中し、4週間ロードマップで「棚卸し → 主力商品の勝ち筋分析 → セラー運営の最低限整備 → 横展開検証」を回します。SOP整備と自動化スクリプトで、属人運用を再利用可能な基盤に置き換えています。
+        リテール系クライアントのデジタルマーケティング全般を担当しています。Meta / Google広告運用を軸に、SEO診断・CV導線改善・業務オペレーション整備を横断的に支援。キックオフ前にPhase 0診断（公開情報のみで取れるSEO・LLMO・構造化データのbaseline）を完了させ、初週から優先順位を合意した状態で着手しました。中長期では、周辺業務のシステム改善・SEO本格化へとスコープを拡張中です。
       </p>
       <div class="work-facts">
-        <span class="work-fact">Multi-Mall (TikTok / Amazon / 楽天)</span>
-        <span class="work-fact"><span class="n">5</span>SOP整備済</span>
-        <span class="work-fact"><span class="n">7</span>領域リスクマップ</span>
-        <span class="work-fact">自走判定3軸</span>
-      </div>
-      <div class="work-progress">
-        <div class="wp-row">
-          <span class="wp-label">SOP整備</span>
-          <span class="wp-bar"><span class="wp-fill" data-pct="100"></span></span>
-          <span class="wp-pct">100%</span>
-        </div>
-        <div class="wp-row">
-          <span class="wp-label">リスクマップ</span>
-          <span class="wp-bar"><span class="wp-fill" data-pct="100"></span></span>
-          <span class="wp-pct">100%</span>
-        </div>
-        <div class="wp-row">
-          <span class="wp-label">クライアント自走</span>
-          <span class="wp-bar"><span class="wp-fill" data-pct="35"></span></span>
-          <span class="wp-pct">35%</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="work">
-      <div class="work-head">
-        <div class="work-title">
-          <span class="code">MISSION-02</span>
-          Retail Digital Marketing
-        </div>
-        <span class="status-badge live">稼働中</span>
-      </div>
-      <p class="work-summary">
-        リテール系クライアントの基幹システム改善・EC改善・周辺業務整理を担当しています。キックオフ前にPhase 0診断（公開情報のみで取れるSEO・LLMO・CV導線・構造化データのbaseline）を完了させ、初週から優先順位を合意した状態で着手しました。事前準備で論点を絞り、初動の質を上げる進め方が定着しています。
-      </p>
-      <div class="work-facts">
-        <span class="work-fact">基幹システム改善</span>
-        <span class="work-fact">EC改善</span>
+        <span class="work-fact">Meta / Google 広告</span>
         <span class="work-fact">SEO / LLMO 診断</span>
+        <span class="work-fact">Phase 0 → Quick Wins</span>
         <span class="work-fact">業務委託 / 月次稼働</span>
       </div>
       <div class="work-progress">
@@ -420,61 +355,100 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
         </div>
         <div class="wp-row">
           <span class="wp-label">Quick Wins実装</span>
-          <span class="wp-bar"><span class="wp-fill" data-pct="45"></span></span>
-          <span class="wp-pct">45%</span>
+          <span class="wp-bar"><span class="wp-fill" data-pct="50"></span></span>
+          <span class="wp-pct">50%</span>
         </div>
       </div>
     </div>
 
-    <div class="work prep">
+    <!-- M-02 -->
+    <div class="work">
       <div class="work-head">
         <div class="work-title">
-          <span class="code">MISSION-03</span>
-          EC Growth Readiness System
+          <span class="code">MISSION-02</span>
+          EC Brand · マーケティングブレーン
         </div>
-        <span class="status-badge prep">運用検証済 / Inquiry受付中</span>
+        <span class="status-badge live">稼働中</span>
       </div>
       <p class="work-summary">
-        Shopifyベースのアパレル・コスメEC案件向けに、Discovery → 分析 → Brief → Proposal までの型を整えています。Multi-brand案件でも初回で何を確認すれば次の分析や提案につながるかを9ファイル構成で定義済み。架空マルチブランドのサンプル一式（Beauty / Fashion）で運用検証を完了しています。
+        DtoC EC ブランドのマーケティングブレーンとして参画しています。実作業の代行ではなく、戦略設計・数値の読み方・施策の優先順位判断・広告クリエイティブ方針の提供が役割です。既存の広告運用・SNS施策を診断しながら、次フェーズのTikTok広告展開・EC横展開の設計を並行して進めています。
       </p>
       <div class="work-facts">
-        <span class="work-fact">Shopify Multi-Brand対応</span>
-        <span class="work-fact"><span class="n">9</span>ファイル構成</span>
-        <span class="work-fact">Discovery → Proposal の型</span>
-        <span class="work-fact">Sample 2件で検証済</span>
+        <span class="work-fact">マーケブレーン / 戦略設計</span>
+        <span class="work-fact">SNS広告診断</span>
+        <span class="work-fact">TikTok広告 次フェーズ設計</span>
+        <span class="work-fact">EC横展開 設計中</span>
       </div>
       <div class="work-progress">
         <div class="wp-row">
-          <span class="wp-label">Readiness Map</span>
+          <span class="wp-label">現状診断</span>
           <span class="wp-bar"><span class="wp-fill" data-pct="100"></span></span>
           <span class="wp-pct">100%</span>
         </div>
         <div class="wp-row">
-          <span class="wp-label">サンプル運用検証</span>
-          <span class="wp-bar"><span class="wp-fill" data-pct="100"></span></span>
-          <span class="wp-pct">100%</span>
+          <span class="wp-label">TikTok設計</span>
+          <span class="wp-bar"><span class="wp-fill" data-pct="60"></span></span>
+          <span class="wp-pct">60%</span>
         </div>
         <div class="wp-row">
-          <span class="wp-label">実案件着手</span>
-          <span class="wp-bar"><span class="wp-fill" data-pct="0"></span></span>
-          <span class="wp-pct">受付中</span>
+          <span class="wp-label">EC横展開</span>
+          <span class="wp-bar"><span class="wp-fill" data-pct="20"></span></span>
+          <span class="wp-pct">20%</span>
         </div>
       </div>
     </div>
 
+    <!-- M-03 -->
+    <div class="work">
+      <div class="work-head">
+        <div class="work-title">
+          <span class="code">MISSION-03</span>
+          TikTok Shop · 立ち上げ / SOP整備 / 横展開
+        </div>
+        <span class="status-badge live">稼働中</span>
+      </div>
+      <p class="work-summary">
+        アパレル・コスメ領域でのTikTok Shop立ち上げを複数案件で支援しています。出品・セラー設定・コンテンツ方針の整備から、SOP化・自動化スクリプトによる属人排除まで一気通貫で担当。「立ち上げたが回らない」をなくすことを目標に、クライアントが自走できる運用基盤を整えます。Shopify連携・多チャネル展開への拡張も視野に設計しています。
+      </p>
+      <div class="work-facts">
+        <span class="work-fact">TikTok Shop 立ち上げ</span>
+        <span class="work-fact"><span class="n">SOP</span>整備・属人排除</span>
+        <span class="work-fact">Shopify連携 設計</span>
+        <span class="work-fact">複数案件 並走</span>
+      </div>
+      <div class="work-progress">
+        <div class="wp-row">
+          <span class="wp-label">セラー整備</span>
+          <span class="wp-bar"><span class="wp-fill" data-pct="100"></span></span>
+          <span class="wp-pct">100%</span>
+        </div>
+        <div class="wp-row">
+          <span class="wp-label">SOP整備</span>
+          <span class="wp-bar"><span class="wp-fill" data-pct="70"></span></span>
+          <span class="wp-pct">70%</span>
+        </div>
+        <div class="wp-row">
+          <span class="wp-label">Shopify連携</span>
+          <span class="wp-bar"><span class="wp-fill" data-pct="25"></span></span>
+          <span class="wp-pct">25%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- M-04 -->
     <div class="work hold">
       <div class="work-head">
         <div class="work-title">
           <span class="code">MISSION-04</span>
-          LLMO Offer + Media Asset
+          LLMO Offer + 業界向けメディア資産
         </div>
         <span class="status-badge hold">内部整備中 / 段階的公開</span>
       </div>
       <p class="work-summary">
-        LLMO領域では、業者向けの提案システムと、業界向けの比較・診断メディアを並行整備しています。AI検索10問テスト・サイト構造チェック・レポート生成まで自動化し、調査から提案送付前確認までを一連の運用として設計。メディア側はSEO/LLMOの実験場兼営業資産として、業界向けのつるはしとシャベルを作ります。
+        LLMO領域では、業者向けの提案システムと業界向けの比較・診断メディアを並行整備しています。AI検索テスト・サイト構造チェック・レポート生成まで自動化し、診断から提案送付前確認までを一連の運用として設計。メディア側はSEO / LLMOの実験場兼営業資産として、業界向けの「つるはしとシャベル」を作ります。
       </p>
       <div class="work-facts">
-        <span class="work-fact">AI検索 4LLM 10問テスト</span>
+        <span class="work-fact">AI検索 4LLM テスト</span>
         <span class="work-fact">Brief → Propose → Check</span>
         <span class="work-fact">Review Gate / Freshness Check</span>
         <span class="work-fact">業界向け比較メディア構想</span>
@@ -501,7 +475,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
   </div>
 </section>
 
-<!-- ============ WORKING STYLE ============ -->
+<!-- TACTICS -->
 <section class="sec">
   <div class="sec-divider"><span class="diamond">◆</span>Section 03 · Tactics<span class="diamond">◆</span></div>
   <div class="sec-label">Tactics <span class="tac-mark">◉◉◉◉</span></div>
@@ -511,27 +485,27 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
     <div class="style-card">
       <div class="num">01</div>
       <h4>事前準備で論点を絞る</h4>
-      <p>初回ヒアリング前に公開情報で取れる診断を完了させ、優先順位を合意した状態で着手します。初動の質を上げる進め方です。</p>
+      <p>初回ヒアリング前に公開情報で取れる診断を完了させ、優先順位を合意した状態で着手します。初動の質を上げ、クライアントの時間を無駄にしない進め方です。</p>
     </div>
     <div class="style-card">
       <div class="num">02</div>
       <h4>Generator → Inspector → Fixer</h4>
-      <p>生成・検査・修正をAIで分業させるパイプライン設計。CI/CDの発想で品質を担保し、人間判断ポイントを明確にします。</p>
+      <p>生成・検査・修正をAIで分業させるパイプライン設計。CI/CDの発想で品質を担保し、人間判断ポイントを明確にして運用します。</p>
     </div>
     <div class="style-card">
       <div class="num">03</div>
       <h4>SOPと自動化で属人を外す</h4>
-      <p>個人経験に依存している業務をSOPと自動化スクリプトに落とし、再利用可能な運用基盤に変えます。</p>
+      <p>個人経験に依存している業務をSOPと自動化スクリプトに落とし、再利用可能な運用基盤に変えます。担当が変わっても回る状態を目標にします。</p>
     </div>
     <div class="style-card">
       <div class="num">04</div>
-      <h4>納品せず、自走まで伴走する</h4>
-      <p>レポート納品で終わりではなく、クライアント自身が運用を継続できる状態（自走判定3軸クリア）を目標にします。</p>
+      <h4>渡して終わりにしない。自走まで伴走する</h4>
+      <p>レポートや資料を渡して完了ではなく、クライアント自身が運用を継続できる状態を目標にします。スコープは限定して入り、徐々に広げていく進め方を好みます。</p>
     </div>
   </div>
 </section>
 
-<!-- ============ HOW I WORK WITH AI ============ -->
+<!-- AI OPERATIONS -->
 <section class="sec">
   <div class="sec-divider"><span class="diamond">◆</span>Section 04 · AI Operations<span class="diamond">◆</span></div>
   <div class="sec-label">How I Work With AI</div>
@@ -539,12 +513,12 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 
   <div class="ai-card">
     <p>
-      AIは「便利な執筆補助」ではなく、役割分担された実務パートナーとして使っています。Generator（生成）、Inspector（検査）、Fixer（修正）のロールを切り分け、CI/CDのような品質パイプラインを構築。クライアント業務のワークフロー全体に組み込み、人間の判断が必要な箇所だけを残す形で運用しています。AIアップデートは年単位ではなく毎日起きる前提で、設計も継続的に更新します。これが他の「AI活用」との違いです。
+      AIは「便利な執筆補助」ではなく、役割分担された実務パートナーとして使っています。Generator（生成）、Inspector（検査）、Fixer（修正）のロールを切り分け、CI/CDのような品質パイプラインを構築。分析・施策立案・コンテンツ生成・営業提案・ドキュメント化・ワークフロー自動化まで、クライアント業務の全体に組み込み、人間の判断が必要な箇所だけを残す形で運用しています。AIアップデートは年単位ではなく毎日起きる前提で、設計も継続的に更新します。
     </p>
   </div>
 </section>
 
-<!-- ============ CTA ============ -->
+<!-- CTA -->
 <section class="sec" style="padding-top:40px">
   <div class="cta">
     <h2>
@@ -552,7 +526,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
       ご相談を受け付けています
     </h2>
     <p>
-      壁打ち段階でも、運用整理の相談でも対応可能です。SEOで詰まっている、AI検索で名前が出ない、ECの優先順位が分からない、社内のAI活用が散らかっている — どこからでも入れます。いきなり実行支援に入るのではなく、まず何を揃えれば前に進めるかを整理します。
+      壁打ち段階でも、運用整理の相談でも対応可能です。ECで数値が上がらない、広告の優先順位が分からない、AI検索で名前が出ない、社内のAI活用が散らかっている、TikTok Shopを立ち上げたい — どこからでも入れます。いきなり実行支援ではなく、まず何を揃えれば前に進めるかを整理するところから始めます。
     </p>
     <div class="cta-actions">
       <a href="mailto:yu.sato@bipe.co.jp?subject=%E3%83%9D%E3%83%BC%E3%83%88%E3%83%95%E3%82%A9%E3%83%AA%E3%82%AA%E7%B5%8C%E7%94%B1%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" class="cta-btn">
@@ -573,41 +547,26 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
   const codecSeq = document.getElementById('codecSeq');
   const codecSkip = document.getElementById('codecSkip');
   const powerOn = document.getElementById('powerOn');
-
-  // セッション中1回限り
   const SHOWN_KEY = 'chanotin_codec_shown';
   const alreadyShown = sessionStorage.getItem(SHOWN_KEY);
 
   if (alreadyShown) {
-    // 2回目以降は CODEC スキップ、電源ONも軽量に
     codecSeq.style.display = 'none';
     powerOn.style.display = 'none';
     initContent();
   } else {
-    // 初回: 電源ON → CODECシーケンス → コンテンツ
-    setTimeout(() => {
-      // CODECシーケンスは2.0秒で終了
-      setTimeout(closeCodec, 2000);
-    }, 350); // 電源ONフラッシュ後
-
+    setTimeout(() => { setTimeout(closeCodec, 2000); }, 350);
     codecSkip.addEventListener('click', closeCodec);
   }
 
   function closeCodec() {
     codecSeq.classList.add('hide');
     sessionStorage.setItem(SHOWN_KEY, '1');
-    setTimeout(() => {
-      codecSeq.style.display = 'none';
-      initContent();
-    }, 400);
+    setTimeout(() => { codecSeq.style.display = 'none'; initContent(); }, 400);
   }
 
-  function initContent() {
-    typewriter();
-    animateProgress();
-  }
+  function initContent() { typewriter(); animateProgress(); }
 
-  // ===== タイプライター =====
   function typewriter() {
     const line1 = document.getElementById('typeLine1');
     const line2 = document.getElementById('typeLine2');
@@ -615,56 +574,29 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
     const text2 = line2.textContent;
     line1.textContent = '';
     line2.textContent = '';
-
-    let i = 0;
-    const typeSpeed = 55;
-
-    function typeLine1() {
-      if (i < text1.length) {
-        line1.textContent += text1.charAt(i);
-        i++;
-        setTimeout(typeLine1, typeSpeed);
-      } else {
-        line1.classList.add('done');
-        line2.style.visibility = 'visible';
-        setTimeout(typeLine2, 200);
-      }
+    let i = 0, j = 0;
+    const speed = 55;
+    function t1() {
+      if (i < text1.length) { line1.textContent += text1.charAt(i++); setTimeout(t1, speed); }
+      else { line1.classList.add('done'); line2.style.visibility = 'visible'; setTimeout(t2, 200); }
     }
-
-    let j = 0;
-    function typeLine2() {
-      if (j < text2.length) {
-        line2.textContent += text2.charAt(j);
-        j++;
-        setTimeout(typeLine2, typeSpeed);
-      } else {
-        line2.classList.add('done');
-      }
+    function t2() {
+      if (j < text2.length) { line2.textContent += text2.charAt(j++); setTimeout(t2, speed); }
+      else { line2.classList.add('done'); }
     }
-
-    typeLine1();
+    t1();
   }
 
-  // ===== 進捗バーアニメ（IntersectionObserverで発火） =====
   function animateProgress() {
     const fills = document.querySelectorAll('.wp-fill');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const pct = entry.target.dataset.pct;
-          entry.target.style.width = pct + '%';
-          observer.unobserve(entry.target);
-        }
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.style.width = e.target.dataset.pct + '%'; obs.unobserve(e.target); }
       });
     }, { threshold: 0.3 });
-
-    fills.forEach(f => {
-      f.style.width = '0%';
-      observer.observe(f);
-    });
+    fills.forEach(f => { f.style.width = '0%'; obs.observe(f); });
   }
 })();
 </script>
-
 </body>
 </html>
